@@ -1,0 +1,6 @@
+framework module Pods_3rd_EyeTests {
+  umbrella header "Pods-3rd EyeTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

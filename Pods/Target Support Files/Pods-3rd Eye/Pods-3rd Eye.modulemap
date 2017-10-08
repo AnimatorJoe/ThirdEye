@@ -1,0 +1,6 @@
+framework module Pods_3rd_Eye {
+  umbrella header "Pods-3rd Eye-umbrella.h"
+
+  export *
+  module * { export * }
+}
