@@ -14,6 +14,7 @@
 		732AF3C51F86DF84007F3451 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 732AF3C31F86DF84007F3451 /* LaunchScreen.storyboard */; };
 		732AF3D01F86DF84007F3451 /* _rd_EyeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732AF3CF1F86DF84007F3451 /* _rd_EyeTests.swift */; };
 		732AF3DB1F86DF84007F3451 /* _rd_EyeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732AF3DA1F86DF84007F3451 /* _rd_EyeUITests.swift */; };
+		73A59BE41F8AA21B00359728 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A59BE31F8AA21B00359728 /* InitialViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		732AF3DC1F86DF84007F3451 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		73A59BE11F8725EC00359728 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Inceptionv3.mlmodel; sourceTree = "<group>"; };
 		73A59BE21F8725F500359728 /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
+		73A59BE31F8AA21B00359728 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			children = (
 				732AF3BA1F86DF84007F3451 /* AppDelegate.swift */,
 				732AF3BC1F86DF84007F3451 /* ViewController.swift */,
+				73A59BE31F8AA21B00359728 /* InitialViewController.swift */,
 				732AF3BE1F86DF84007F3451 /* Main.storyboard */,
 				732AF3C11F86DF84007F3451 /* Assets.xcassets */,
 				732AF3C31F86DF84007F3451 /* LaunchScreen.storyboard */,
@@ -263,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73A59BE41F8AA21B00359728 /* InitialViewController.swift in Sources */,
 				732AF3BD1F86DF84007F3451 /* ViewController.swift in Sources */,
 				732AF3BB1F86DF84007F3451 /* AppDelegate.swift in Sources */,
 			);
@@ -434,7 +438,7 @@
 				DEVELOPMENT_TEAM = 9SR8L2XE3A;
 				INFOPLIST_FILE = "3rd Eye/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.westlakeapc.-rd-Eye";
+				PRODUCT_BUNDLE_IDENTIFIER = com.westlakeapc.ThirdEye;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -449,7 +453,7 @@
 				DEVELOPMENT_TEAM = 9SR8L2XE3A;
 				INFOPLIST_FILE = "3rd Eye/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.westlakeapc.-rd-Eye";
+				PRODUCT_BUNDLE_IDENTIFIER = com.westlakeapc.ThirdEye;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
