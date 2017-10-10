@@ -8,6 +8,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Courier.ttc">
+            <string>Courier</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Initial View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -53,9 +58,31 @@
                     <view key="view" contentMode="scaleToFill" id="Vve-0g-mtT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guess" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KfB-9J-ilA">
+                                <rect key="frame" x="10" y="40" width="355" height="70"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="Sib-gc-F9H"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KfB-9J-ilA" firstAttribute="top" secondItem="MnR-XH-ZFa" secondAttribute="top" constant="20" id="FZO-jA-cgQ"/>
+                            <constraint firstItem="KfB-9J-ilA" firstAttribute="leading" secondItem="MnR-XH-ZFa" secondAttribute="leading" constant="10" id="W3e-1O-Wid"/>
+                            <constraint firstItem="MnR-XH-ZFa" firstAttribute="trailing" secondItem="KfB-9J-ilA" secondAttribute="trailing" constant="10" id="uId-Fz-s6P"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="MnR-XH-ZFa"/>
                     </view>
+                    <connections>
+                        <outlet property="guessLabel" destination="KfB-9J-ilA" id="EDn-T5-Vm9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7aN-C6-oTh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

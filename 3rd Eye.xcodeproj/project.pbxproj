@@ -15,6 +15,8 @@
 		732AF3D01F86DF84007F3451 /* _rd_EyeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732AF3CF1F86DF84007F3451 /* _rd_EyeTests.swift */; };
 		732AF3DB1F86DF84007F3451 /* _rd_EyeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732AF3DA1F86DF84007F3451 /* _rd_EyeUITests.swift */; };
 		73A59BE41F8AA21B00359728 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A59BE31F8AA21B00359728 /* InitialViewController.swift */; };
+		73A59C5F1F8C5B1000359728 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 73A59BE21F8725F500359728 /* Resnet50.mlmodel */; };
+		73A59C601F8C5B1300359728 /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 73A59BE11F8725EC00359728 /* Inceptionv3.mlmodel */; };
 		937004253C2C1938FDFCCAB9 /* Pods_3rd_EyeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2751558D45A241974B180F /* Pods_3rd_EyeUITests.framework */; };
 		9D9DC317FB0D4E608FA9A3D0 /* Pods_3rd_EyeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A49E9737C021FDBB1A2FC7C /* Pods_3rd_EyeTests.framework */; };
 		E9FB4A880AE86DC6B2A9D860 /* Pods_3rd_Eye.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F884C7670A7363027EB2ADF2 /* Pods_3rd_Eye.framework */; };
@@ -453,8 +455,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73A59C601F8C5B1300359728 /* Inceptionv3.mlmodel in Sources */,
 				73A59BE41F8AA21B00359728 /* InitialViewController.swift in Sources */,
 				732AF3BD1F86DF84007F3451 /* ViewController.swift in Sources */,
+				73A59C5F1F8C5B1000359728 /* Resnet50.mlmodel in Sources */,
 				732AF3BB1F86DF84007F3451 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
