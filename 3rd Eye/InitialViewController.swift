@@ -10,10 +10,11 @@ import UIKit
 
 class InitialViewController: UIViewController {
 
+    @IBOutlet var welcomeLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,7 +22,10 @@ class InitialViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.performSegue(withIdentifier: "bringToCameraView", sender: nil)
+    }
+    
     /*
     // MARK: - Navigation
 
