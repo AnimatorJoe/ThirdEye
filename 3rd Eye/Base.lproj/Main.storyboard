@@ -16,7 +16,29 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Avf-Yj-vcY">
+                                <rect key="frame" x="16" y="481" width="343" height="30"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <segue destination="jwP-zA-I6r" kind="show" id="M4o-LT-de5"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Third Eye" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Pu-Op-rib">
+                                <rect key="frame" x="104" y="70" width="167" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Avf-Yj-vcY" firstAttribute="top" secondItem="1Pu-Op-rib" secondAttribute="bottom" constant="390" id="0d1-zc-PCR"/>
+                            <constraint firstItem="1Pu-Op-rib" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="21M-WM-KEJ"/>
+                            <constraint firstItem="1Pu-Op-rib" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="J6s-Ae-8YU"/>
+                            <constraint firstItem="Avf-Yj-vcY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Wto-D7-rD9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Avf-Yj-vcY" secondAttribute="trailing" constant="16" id="tMR-EF-qj9"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
