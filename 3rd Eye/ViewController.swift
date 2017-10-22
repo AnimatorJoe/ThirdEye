@@ -13,6 +13,7 @@ import Vision
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     @IBOutlet var guessLabel: UILabel!
+    let synth = AVSpeechSynthesizer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +45,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         let dataOutput = AVCaptureVideoDataOutput()
         dataOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoQueue"))
         captureSession.addOutput(dataOutput)
-        
-        //VNImageRequestHandler(cgImage: <#T##CGImage#>, options: []).perform()
     }
     
     // Called everytime camera updates frame
@@ -57,9 +56,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         guard let model = try? VNCoreMLModel(for: Resnet50().model) else { return }
         
         let request = VNCoreMLRequest(model: model) { (finishedReq, err) in
-            
-            //print("Result: \(finishedReq.results!)")
-            
             guard let results = finishedReq.results as? [VNClassificationObservation] else { return }
             
             guard let firstObservation = results.first else { return }
@@ -67,7 +63,17 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             print(firstObservation.identifier, firstObservation.confidence)
             
             DispatchQueue.main.async {
-                self.guessLabel.text = "Guess: " + firstObservation.identifier + "\nConfidence:" + String(firstObservation.confidence * 100) + "%"
+                self.guessLabel.text = """
+                    Guess: \(firstObservation.identifier)
+                    Confidence: \(firstObservation.confidence * 100)%
+                """
+                
+                let speech = AVSpeechUtterance(string: firstObservation.identifier)
+                speech.rate = 0.25
+                speech.pitchMultiplier = 0.25
+                speech.volume = 0.75
+                
+                self.synth.speak(speech)
             }
             
         }
