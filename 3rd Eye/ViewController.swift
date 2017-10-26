@@ -67,13 +67,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                     Guess: \(firstObservation.identifier)
                     Confidence: \(firstObservation.confidence * 100)%
                 """
+                if firstObservation.confidence * 100 > 70{
+                    let speech = AVSpeechUtterance(string: firstObservation.identifier)
+                    speech.rate = 0.25
+                    speech.pitchMultiplier = 0.25
+                    speech.volume = 0.75
                 
-                let speech = AVSpeechUtterance(string: firstObservation.identifier)
-                speech.rate = 0.25
-                speech.pitchMultiplier = 0.25
-                speech.volume = 0.75
-                
-                self.synth.speak(speech)
+                    self.synth.speak(speech)
+                }
             }
             
         }
