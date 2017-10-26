@@ -4,8 +4,9 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <development version="8000" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -18,6 +19,10 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="InitialViewController" customModule="_rd_Eye" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NpW-nU-KRx"/>
+                        <viewControllerLayoutGuide type="bottom" id="meC-5s-1xX"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,15 +42,14 @@
                         <constraints>
                             <constraint firstItem="Avf-Yj-vcY" firstAttribute="top" secondItem="1Pu-Op-rib" secondAttribute="bottom" constant="390" id="0d1-zc-PCR"/>
                             <constraint firstItem="1Pu-Op-rib" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="21M-WM-KEJ"/>
-                            <constraint firstItem="1Pu-Op-rib" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="J6s-Ae-8YU"/>
-                            <constraint firstItem="Avf-Yj-vcY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Wto-D7-rD9"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Avf-Yj-vcY" secondAttribute="trailing" constant="16" id="tMR-EF-qj9"/>
+                            <constraint firstItem="1Pu-Op-rib" firstAttribute="top" secondItem="NpW-nU-KRx" secondAttribute="bottom" constant="50" id="J6s-Ae-8YU"/>
+                            <constraint firstItem="Avf-Yj-vcY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="Wto-D7-rD9"/>
+                            <constraint firstAttribute="trailing" secondItem="Avf-Yj-vcY" secondAttribute="trailing" constant="16" id="tMR-EF-qj9"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="welcomeLabel" destination="1Pu-Op-rib" id="5hE-Dk-d7D"/>
-                        <segue destination="jwP-zA-I6r" kind="show" identifier="bringToCameraView" id="U3n-zl-NnF"/>
+                        <segue destination="jwP-zA-I6r" kind="showDetail" identifier="bringToCameraView" action="showViewController:sender:" id="U3n-zl-NnF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -56,6 +60,10 @@
         <scene sceneID="wX3-YV-DIP">
             <objects>
                 <viewController id="jwP-zA-I6r" customClass="ViewController" customModule="_rd_Eye" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bjw-bQ-8fx"/>
+                        <viewControllerLayoutGuide type="bottom" id="4Qp-cA-Rat"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Vve-0g-mtT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -75,11 +83,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="KfB-9J-ilA" firstAttribute="top" secondItem="MnR-XH-ZFa" secondAttribute="top" constant="20" id="FZO-jA-cgQ"/>
-                            <constraint firstItem="KfB-9J-ilA" firstAttribute="leading" secondItem="MnR-XH-ZFa" secondAttribute="leading" constant="10" id="W3e-1O-Wid"/>
-                            <constraint firstItem="MnR-XH-ZFa" firstAttribute="trailing" secondItem="KfB-9J-ilA" secondAttribute="trailing" constant="10" id="uId-Fz-s6P"/>
+                            <constraint firstItem="KfB-9J-ilA" firstAttribute="top" secondItem="bjw-bQ-8fx" secondAttribute="bottom" constant="20" id="FZO-jA-cgQ"/>
+                            <constraint firstItem="KfB-9J-ilA" firstAttribute="leading" secondItem="Vve-0g-mtT" secondAttribute="leading" constant="10" id="W3e-1O-Wid"/>
+                            <constraint firstAttribute="trailing" secondItem="KfB-9J-ilA" secondAttribute="trailing" constant="10" id="uId-Fz-s6P"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="MnR-XH-ZFa"/>
                     </view>
                     <connections>
                         <outlet property="guessLabel" destination="KfB-9J-ilA" id="EDn-T5-Vm9"/>
