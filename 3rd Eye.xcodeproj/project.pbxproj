@@ -17,6 +17,7 @@
 		73A59BE41F8AA21B00359728 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A59BE31F8AA21B00359728 /* InitialViewController.swift */; };
 		73A59C5F1F8C5B1000359728 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 73A59BE21F8725F500359728 /* Resnet50.mlmodel */; };
 		73A59C601F8C5B1300359728 /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 73A59BE11F8725EC00359728 /* Inceptionv3.mlmodel */; };
+		73AA27C61FA24321003A1D39 /* VGG16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 73AA27C51FA242B8003A1D39 /* VGG16.mlmodel */; };
 		937004253C2C1938FDFCCAB9 /* Pods_3rd_EyeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2751558D45A241974B180F /* Pods_3rd_EyeUITests.framework */; };
 		9D9DC317FB0D4E608FA9A3D0 /* Pods_3rd_EyeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A49E9737C021FDBB1A2FC7C /* Pods_3rd_EyeTests.framework */; };
 		E9FB4A880AE86DC6B2A9D860 /* Pods_3rd_Eye.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F884C7670A7363027EB2ADF2 /* Pods_3rd_Eye.framework */; };
@@ -59,6 +60,7 @@
 		73A59BE11F8725EC00359728 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Inceptionv3.mlmodel; sourceTree = "<group>"; };
 		73A59BE21F8725F500359728 /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
 		73A59BE31F8AA21B00359728 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		73AA27C51FA242B8003A1D39 /* VGG16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = VGG16.mlmodel; sourceTree = "<group>"; };
 		7A49E9737C021FDBB1A2FC7C /* Pods_3rd_EyeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_3rd_EyeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADB04B56D27C710EC37BC37D /* Pods-3rd Eye.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-3rd Eye.release.xcconfig"; path = "Pods/Target Support Files/Pods-3rd Eye/Pods-3rd Eye.release.xcconfig"; sourceTree = "<group>"; };
 		B71459AAE256DA09E740E2A2 /* Pods-3rd Eye.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-3rd Eye.debug.xcconfig"; path = "Pods/Target Support Files/Pods-3rd Eye/Pods-3rd Eye.debug.xcconfig"; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			children = (
 				73A59BE11F8725EC00359728 /* Inceptionv3.mlmodel */,
 				73A59BE21F8725F500359728 /* Resnet50.mlmodel */,
+				73AA27C51FA242B8003A1D39 /* VGG16.mlmodel */,
 				732AF3B91F86DF84007F3451 /* 3rd Eye */,
 				732AF3CE1F86DF84007F3451 /* 3rd EyeTests */,
 				732AF3D91F86DF84007F3451 /* 3rd EyeUITests */,
@@ -457,6 +460,7 @@
 			files = (
 				73A59C601F8C5B1300359728 /* Inceptionv3.mlmodel in Sources */,
 				73A59BE41F8AA21B00359728 /* InitialViewController.swift in Sources */,
+				73AA27C61FA24321003A1D39 /* VGG16.mlmodel in Sources */,
 				732AF3BD1F86DF84007F3451 /* ViewController.swift in Sources */,
 				73A59C5F1F8C5B1000359728 /* Resnet50.mlmodel in Sources */,
 				732AF3BB1F86DF84007F3451 /* AppDelegate.swift in Sources */,
