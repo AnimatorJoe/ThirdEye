@@ -14,6 +14,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     @IBOutlet var guessLabel: UILabel!
     let synth = AVSpeechSynthesizer()
+    var requestedIdentification = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,26 +68,27 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                     Guess: \(firstObservation.identifier)
                     Confidence: \(firstObservation.confidence * 100)%
                 """
-                if firstObservation.confidence * 100 > 70{
+                if (firstObservation.confidence * 100 > 70 && self.requestedIdentification){
                     let speech = AVSpeechUtterance(string: firstObservation.identifier)
                     speech.rate = 0.25
                     speech.pitchMultiplier = 0.25
                     speech.volume = 0.75
                 
                     self.synth.speak(speech)
+                    self.requestedIdentification = false
                 }
             }
             
         }
         
-        
-        
         try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
-        
-        
         
     }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        requestedIdentification = true
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
