@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		732917471FA3993900B286C5 /* VGG16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 732917461FA3993200B286C5 /* VGG16.mlmodel */; };
 		732AF3BB1F86DF84007F3451 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732AF3BA1F86DF84007F3451 /* AppDelegate.swift */; };
 		732AF3BD1F86DF84007F3451 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732AF3BC1F86DF84007F3451 /* ViewController.swift */; };
 		732AF3C01F86DF84007F3451 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 732AF3BE1F86DF84007F3451 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 		073A5DA137282458E32AE25C /* Pods-3rd EyeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-3rd EyeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-3rd EyeUITests/Pods-3rd EyeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		327B6291B9F73309BE496BAE /* Pods-3rd EyeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-3rd EyeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-3rd EyeTests/Pods-3rd EyeTests.release.xcconfig"; sourceTree = "<group>"; };
 		5FC8DF6E1948D8690219246A /* Pods-3rd EyeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-3rd EyeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-3rd EyeTests/Pods-3rd EyeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		732917461FA3993200B286C5 /* VGG16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = VGG16.mlmodel; sourceTree = "<group>"; };
 		732AF3B71F86DF84007F3451 /* 3rd Eye.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "3rd Eye.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		732AF3BA1F86DF84007F3451 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		732AF3BC1F86DF84007F3451 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			children = (
 				73A59BE11F8725EC00359728 /* Inceptionv3.mlmodel */,
 				73A59BE21F8725F500359728 /* Resnet50.mlmodel */,
+				732917461FA3993200B286C5 /* VGG16.mlmodel */,
 				732AF3B91F86DF84007F3451 /* 3rd Eye */,
 				732AF3CE1F86DF84007F3451 /* 3rd EyeTests */,
 				732AF3D91F86DF84007F3451 /* 3rd EyeUITests */,
@@ -457,6 +460,7 @@
 			files = (
 				73A59C601F8C5B1300359728 /* Inceptionv3.mlmodel in Sources */,
 				73A59BE41F8AA21B00359728 /* InitialViewController.swift in Sources */,
+				732917471FA3993900B286C5 /* VGG16.mlmodel in Sources */,
 				732AF3BD1F86DF84007F3451 /* ViewController.swift in Sources */,
 				73A59C5F1F8C5B1000359728 /* Resnet50.mlmodel in Sources */,
 				732AF3BB1F86DF84007F3451 /* AppDelegate.swift in Sources */,

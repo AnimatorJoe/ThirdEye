@@ -4,9 +4,8 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <development version="8000" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -46,6 +45,7 @@
                             <constraint firstItem="Avf-Yj-vcY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="Wto-D7-rD9"/>
                             <constraint firstAttribute="trailing" secondItem="Avf-Yj-vcY" secondAttribute="trailing" constant="16" id="tMR-EF-qj9"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Azh-wt-un5"/>
                     </view>
                     <connections>
                         <outlet property="welcomeLabel" destination="1Pu-Op-rib" id="5hE-Dk-d7D"/>
@@ -87,6 +87,7 @@
                             <constraint firstItem="KfB-9J-ilA" firstAttribute="leading" secondItem="Vve-0g-mtT" secondAttribute="leading" constant="10" id="W3e-1O-Wid"/>
                             <constraint firstAttribute="trailing" secondItem="KfB-9J-ilA" secondAttribute="trailing" constant="10" id="uId-Fz-s6P"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="YvR-MX-Gzy"/>
                     </view>
                     <connections>
                         <outlet property="guessLabel" destination="KfB-9J-ilA" id="EDn-T5-Vm9"/>
@@ -94,7 +95,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7aN-C6-oTh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1382" y="34"/>
+            <point key="canvasLocation" x="1381.5999999999999" y="33.733133433283363"/>
         </scene>
     </scenes>
 </document>
