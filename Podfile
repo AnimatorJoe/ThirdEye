@@ -6,7 +6,7 @@ target '3rd Eye' do
   use_frameworks!
 
   # Pods for 3rd Eye
-  pod 'Toaster'
+  pod 'Toast-Swift', '~> 2.0.0'
 
   target '3rd EyeTests' do
     inherit! :search_paths

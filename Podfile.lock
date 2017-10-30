@@ -1,12 +1,12 @@
 PODS:
-  - Toaster (2.0.4)
+  - Toast-Swift (2.0.0)
 
 DEPENDENCIES:
-  - Toaster
+  - Toast-Swift (~> 2.0.0)
 
 SPEC CHECKSUMS:
-  Toaster: f13031c636ef065281bc11857be9a16c7659e04f
+  Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
 
-PODFILE CHECKSUM: bf44c1956a1735ebbf91b9ecb055164777d68014
+PODFILE CHECKSUM: 19ba610af575353a5aad47bb6d60b3d1aab08746
 
 COCOAPODS: 1.2.1
