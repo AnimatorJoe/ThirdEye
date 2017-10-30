@@ -19,7 +19,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.makeToast("Tap to Request and Identification", duration: 5, position: .center)
+        self.view.makeToast("Tap to Request an Identification", duration: 5, position: .center)
         setCameraAccess()
     }
     
@@ -40,9 +40,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         previewLayer.frame = view.frame
         
         view.layer.addSublayer(previewLayer)
-        
         view.addSubview(guessLabel)
-        
         
         // Extractiong and analysing image
         let dataOutput = AVCaptureVideoDataOutput()
