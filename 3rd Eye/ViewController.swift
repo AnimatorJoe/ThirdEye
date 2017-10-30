@@ -9,6 +9,7 @@
 import UIKit
 import AVKit
 import Vision
+import Toast_Swift
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
@@ -18,6 +19,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.makeToast("Tap to Request and Identification", duration: 5, position: .center)
         setCameraAccess()
     }
     
