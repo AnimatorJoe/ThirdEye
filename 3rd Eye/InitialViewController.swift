@@ -26,6 +26,10 @@ class InitialViewController: UIViewController {
         self.performSegue(withIdentifier: "bringToCameraView", sender: nil)
     }
     
+    @IBAction func beginButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "bringToCameraView", sender: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

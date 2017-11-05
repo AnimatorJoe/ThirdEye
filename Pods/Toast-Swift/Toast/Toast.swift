@@ -382,11 +382,11 @@ public extension UIView {
         }
     }
     
-    private func hideToast(_ toast: UIView) {
+    public func hideToast(_ toast: UIView) {
         self.hideToast(toast, fromTap: false)
     }
     
-    private func hideToast(_ toast: UIView, fromTap: Bool) {
+    public func hideToast(_ toast: UIView, fromTap: Bool) {
         
         UIView.animate(withDuration: ToastManager.shared.style.fadeDuration, delay: 0.0, options: [.curveEaseIn, .beginFromCurrentState], animations: { () -> Void in
             toast.alpha = 0.0

@@ -15,12 +15,13 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     @IBOutlet var guessLabel: UILabel!
     let synth = AVSpeechSynthesizer()
-    var requestedIdentification = false
+    var identificationRequested = false
+    var requestToast: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.makeToast("Tap to Request an Identification", duration: 5, position: .center)
         setCameraAccess()
+        promptForRequest()
     }
     
     // Set up camera access
@@ -50,32 +51,42 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     // Called everytime camera updates frame
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        
+        if !identificationRequested { return }
+        
         //print("Capturing frame at \(Date())")
         
         guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         
-        guard let model = try? VNCoreMLModel(for: VGG16().model) else { return }
+        guard let model = try? VNCoreMLModel(for: Resnet50().model) else { return }
         
         let request = VNCoreMLRequest(model: model) { (finishedReq, err) in
             guard let results = finishedReq.results as? [VNClassificationObservation] else { return }
             
+            // Obtain best guess
             guard let firstObservation = results.first else { return }
             
             print(firstObservation.identifier, firstObservation.confidence)
             
+            // Present Guess
             DispatchQueue.main.async {
-                self.guessLabel.text = """
-                    Guess: \(firstObservation.identifier)
-                    Confidence: \(firstObservation.confidence * 100)%
-                """
-                if (firstObservation.confidence * 100 > 70 && self.requestedIdentification){
+                if (firstObservation.confidence * 100 > 50 && self.identificationRequested){
+                    self.guessLabel.text = """
+                        Guess: \(firstObservation.identifier)
+                        Confidence: \(firstObservation.confidence * 100)%
+                    """
+                    
+                    print("Say: \(firstObservation.identifier)")
+                    
                     let speech = AVSpeechUtterance(string: firstObservation.identifier)
                     speech.rate = 0.25
-                    speech.pitchMultiplier = 0.25
+                    speech.pitchMultiplier = 0.5
                     speech.volume = 0.75
                 
                     self.synth.speak(speech)
-                    self.requestedIdentification = false
+                    
+                    self.promptForRequest()
+                    
                 }
             }
             
@@ -85,8 +96,27 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
     }
 
+    // Ask for a reuqest
+    func promptForRequest() {
+        self.identificationRequested = false
+        do {
+            requestToast = try self.view.toastViewForMessage("Tap to Request an Identification", title: nil, image: nil, style: ToastManager.shared.style)
+        } catch {
+            return
+        }
+        
+        self.view.showToast(requestToast, duration: 5, position: .center, completion: nil)
+    }
+    
+    // When a Request in Made
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        requestedIdentification = true
+        if self.synth.isSpeaking || identificationRequested {return}
+        
+        identificationRequested = true
+        self.guessLabel.text = "Requesting..."
+     
+        self.view.hideToast(requestToast)
+        
     }
     
     override func didReceiveMemoryWarning() {
