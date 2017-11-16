@@ -18,6 +18,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var identificationRequested = false
     var requestToast: UIView!
     
+    let coreML = RecognitionModel.coreML
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setCameraAccess()
@@ -26,73 +28,81 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     // Set up camera access
     func setCameraAccess() {
-        // Set up capture session
-        let captureSession = AVCaptureSession()
-        //captureSession.sessionPreset = .photo
+        if coreML == .coreML {
         
-        guard let captureDevice = AVCaptureDevice.default(for: .video) else { return }
-        guard let input = try? AVCaptureDeviceInput(device: captureDevice) else { return }
-        captureSession.addInput(input)
-        
-        captureSession.startRunning()
-        
-        // Show camera input to view
-        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        previewLayer.frame = view.frame
-        
-        view.layer.addSublayer(previewLayer)
-        view.addSubview(guessLabel)
-        
-        // Extractiong and analysing image
-        let dataOutput = AVCaptureVideoDataOutput()
-        dataOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoQueue"))
-        captureSession.addOutput(dataOutput)
+            // Set up capture session
+            let captureSession = AVCaptureSession()
+            //captureSession.sessionPreset = .photo
+            
+            guard let captureDevice = AVCaptureDevice.default(for: .video) else { return }
+            guard let input = try? AVCaptureDeviceInput(device: captureDevice) else { return }
+            captureSession.addInput(input)
+            
+            captureSession.startRunning()
+            
+            // Show camera input to view
+            let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+            previewLayer.frame = view.frame
+            
+            view.layer.addSublayer(previewLayer)
+            view.addSubview(guessLabel)
+            
+            // Extractiong and analysing image
+            let dataOutput = AVCaptureVideoDataOutput()
+            dataOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoQueue"))
+            captureSession.addOutput(dataOutput)
+            
+        }
     }
     
     // Called everytime camera updates frame
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         
-        if !identificationRequested { return }
-        
-        //print("Capturing frame at \(Date())")
-        
-        guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-        
-        guard let model = try? VNCoreMLModel(for: Resnet50().model) else { return }
-        
-        let request = VNCoreMLRequest(model: model) { (finishedReq, err) in
-            guard let results = finishedReq.results as? [VNClassificationObservation] else { return }
+        if coreML == .coreML {
             
-            // Obtain best guess
-            guard let firstObservation = results.first else { return }
             
-            print(firstObservation.identifier, firstObservation.confidence)
+            if !identificationRequested { return }
             
-            // Present Guess
-            DispatchQueue.main.async {
-                if (firstObservation.confidence * 100 > 50 && self.identificationRequested){
-                    self.guessLabel.text = """
+            //print("Capturing frame at \(Date())")
+            
+            guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+            
+            guard let model = try? VNCoreMLModel(for: Resnet50().model) else { return }
+            
+            let request = VNCoreMLRequest(model: model) { (finishedReq, err) in
+                guard let results = finishedReq.results as? [VNClassificationObservation] else { return }
+                
+                // Obtain best guess
+                guard let firstObservation = results.first else { return }
+                
+                print(firstObservation.identifier, firstObservation.confidence)
+                
+                // Present Guess
+                DispatchQueue.main.async {
+                    if (firstObservation.confidence * 100 > 50 && self.identificationRequested){
+                        self.guessLabel.text = """
                         Guess: \(firstObservation.identifier)
                         Confidence: \(firstObservation.confidence * 100)%
-                    """
-                    
-                    print("Say: \(firstObservation.identifier)")
-                    
-                    let speech = AVSpeechUtterance(string: firstObservation.identifier)
-                    speech.rate = 0.25
-                    speech.pitchMultiplier = 0.5
-                    speech.volume = 0.75
-                
-                    self.synth.speak(speech)
-                    
-                    self.promptForRequest()
-                    
+                        """
+                        
+                        print("Say: \(firstObservation.identifier)")
+                        
+                        let speech = AVSpeechUtterance(string: firstObservation.identifier)
+                        speech.rate = 0.25
+                        speech.pitchMultiplier = 0.5
+                        speech.volume = 0.75
+                        
+                        self.synth.speak(speech)
+                        
+                        self.promptForRequest()
+                        
+                    }
                 }
+                
             }
             
+            try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
         }
-        
-        try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
         
     }
 
