@@ -52,17 +52,18 @@
                     </view>
                     <connections>
                         <outlet property="welcomeLabel" destination="1Pu-Op-rib" id="5hE-Dk-d7D"/>
-                        <segue destination="jwP-zA-I6r" kind="showDetail" identifier="bringToCameraView" action="showViewController:sender:" id="U3n-zl-NnF"/>
+                        <segue destination="jwP-zA-I6r" kind="showDetail" identifier="bringToVisualSupportView" action="showViewController:sender:" id="U3n-zl-NnF"/>
+                        <segue destination="Imu-dh-YYJ" kind="show" identifier="bringToDeveloperView" id="gXV-fH-a1H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="669.60000000000002" y="33.733133433283363"/>
+            <point key="canvasLocation" x="502" y="61"/>
         </scene>
-        <!--View Controller-->
+        <!--Visual Support View Controller-->
         <scene sceneID="wX3-YV-DIP">
             <objects>
-                <viewController id="jwP-zA-I6r" customClass="ViewController" customModule="_rd_Eye" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jwP-zA-I6r" customClass="VisualSupportViewController" customModule="_rd_Eye" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bjw-bQ-8fx"/>
                         <viewControllerLayoutGuide type="bottom" id="4Qp-cA-Rat"/>
@@ -98,7 +99,48 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7aN-C6-oTh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1381.5999999999999" y="33.733133433283363"/>
+            <point key="canvasLocation" x="1393" y="-152"/>
+        </scene>
+        <!--Developer Mode View Controller-->
+        <scene sceneID="6MU-bS-le1">
+            <objects>
+                <viewController id="Imu-dh-YYJ" customClass="DeveloperModeViewController" customModule="_rd_Eye" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ena-mk-TjG"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZgF-L8-YzS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="s8h-Fd-tEp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guess" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="11" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P6y-yi-rIU">
+                                <rect key="frame" x="10" y="40" width="355" height="70"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="kXU-ma-v5b"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="P6y-yi-rIU" firstAttribute="top" secondItem="ena-mk-TjG" secondAttribute="bottom" constant="20" id="7Pk-8J-bYy"/>
+                            <constraint firstItem="P6y-yi-rIU" firstAttribute="leading" secondItem="s8h-Fd-tEp" secondAttribute="leading" constant="10" id="XEQ-oG-Kgf"/>
+                            <constraint firstAttribute="trailing" secondItem="P6y-yi-rIU" secondAttribute="trailing" constant="10" id="eqR-TJ-mLy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="MIp-vf-RwK"/>
+                    </view>
+                    <connections>
+                        <outlet property="guessLabel" destination="P6y-yi-rIU" id="8HT-4H-Mg6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4h8-pE-5ml" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1393" y="587"/>
         </scene>
     </scenes>
 </document>

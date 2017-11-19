@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,7 @@
 		52CE256322934AAB403A38D9A26AFD1F /* Toast-Swift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CE4BC48D47B7FA52A3DEA297512CE2C5 /* Toast-Swift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		53351894E86C650DB95D5B2EB29FBC9B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F9A0E952988935C32EDDB1429D7133 /* Foundation.framework */; };
 		6AD1BCD935C24B0CC11AFFE940536B36 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F9A0E952988935C32EDDB1429D7133 /* Foundation.framework */; };
+		73D554D01FC2165A003F3614 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6068E46F837C6016823EBEE5392A58 /* Toast.swift */; };
 		D3BFEDB7455D033264A39CF36F0A8C72 /* Pods-3rd Eye-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 21282F1EDC63954297FCACA574037CA4 /* Pods-3rd Eye-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DC6EDFD6EB53AA3A3EDEDC725BF909FF /* Pods-3rd EyeTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 472D62E44266803B2428CEB11ADE973E /* Pods-3rd EyeTests-dummy.m */; };
 		E1E2121451A8B3CB3578B69D17C0C622 /* Pods-3rd EyeUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C5AB6181A1FEBEF6D4FF29E3724B1C8B /* Pods-3rd EyeUITests-dummy.m */; };
@@ -34,11 +35,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0472C287C6AA75BCC58569168D48D7C0 /* Pods-3rd EyeTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-3rd EyeTests.modulemap"; sourceTree = "<group>"; };
+		0472C287C6AA75BCC58569168D48D7C0 /* Pods-3rd EyeTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-3rd EyeTests.modulemap"; sourceTree = "<group>"; };
 		170D60F32854743B37FF2D1278F47378 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21282F1EDC63954297FCACA574037CA4 /* Pods-3rd Eye-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-3rd Eye-umbrella.h"; sourceTree = "<group>"; };
 		2B6A9A2145E673AB641D6587083905EE /* Pods-3rd Eye-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-3rd Eye-resources.sh"; sourceTree = "<group>"; };
-		41021383B0AEBAEDAD42A7E11FE72E71 /* Toast_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Toast_Swift.framework; path = "Toast-Swift.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		41021383B0AEBAEDAD42A7E11FE72E71 /* Toast_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Toast_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		449A38DACE3903FCD774D7F8D0887A27 /* Pods-3rd EyeUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-3rd EyeUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		44EFF13DED140F3252D391AC4E0C6360 /* Pods-3rd EyeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-3rd EyeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		472D62E44266803B2428CEB11ADE973E /* Pods-3rd EyeTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-3rd EyeTests-dummy.m"; sourceTree = "<group>"; };
@@ -47,20 +48,20 @@
 		53F290E0A72EBE21EB6188BC930B9F7F /* Pods-3rd EyeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-3rd EyeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		54F9A0E952988935C32EDDB1429D7133 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		6E38D4AD608D704F1920B573A514594A /* Pods-3rd EyeUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-3rd EyeUITests-umbrella.h"; sourceTree = "<group>"; };
-		6FE82391E55F0CE301A1010698B650DF /* Pods_3rd_EyeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_3rd_EyeTests.framework; path = "Pods-3rd EyeTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		72B7CCF4F9DC15740A71826952B3058C /* Pods_3rd_EyeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_3rd_EyeUITests.framework; path = "Pods-3rd EyeUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FE82391E55F0CE301A1010698B650DF /* Pods_3rd_EyeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_3rd_EyeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		72B7CCF4F9DC15740A71826952B3058C /* Pods_3rd_EyeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_3rd_EyeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DF08FF45C1B19C1C7DEB9581592494A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E8B7A8C44B145F6B6D2F47952B0282C /* Pods-3rd Eye-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-3rd Eye-frameworks.sh"; sourceTree = "<group>"; };
-		8404F9447A741BC43D62D3777E652464 /* Pods-3rd Eye.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-3rd Eye.modulemap"; sourceTree = "<group>"; };
+		8404F9447A741BC43D62D3777E652464 /* Pods-3rd Eye.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-3rd Eye.modulemap"; sourceTree = "<group>"; };
 		8E0D79733EC05F0E16A50388A3BF63A5 /* Pods-3rd EyeTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-3rd EyeTests-frameworks.sh"; sourceTree = "<group>"; };
 		914E5439986AC2523FFB0FC6B07F55F9 /* Pods-3rd Eye.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-3rd Eye.release.xcconfig"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9454AE1854539CC5A376600BD3E83B9D /* Pods-3rd EyeUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-3rd EyeUITests.modulemap"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9454AE1854539CC5A376600BD3E83B9D /* Pods-3rd EyeUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-3rd EyeUITests.modulemap"; sourceTree = "<group>"; };
 		97301E5324EA2EC64C6A5A3C624EAF8C /* Pods-3rd Eye.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-3rd Eye.debug.xcconfig"; sourceTree = "<group>"; };
 		9CB6E42CD2D3211134D51F2D09BD7C9E /* Pods-3rd EyeTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-3rd EyeTests-umbrella.h"; sourceTree = "<group>"; };
 		9F6068E46F837C6016823EBEE5392A58 /* Toast.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Toast.swift; path = Toast/Toast.swift; sourceTree = "<group>"; };
 		AC21E042593269EBEF50C9C60FC9B024 /* Toast-Swift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Toast-Swift.xcconfig"; sourceTree = "<group>"; };
-		B1B20C64D8E1D6A68A1E5C60F4D37DFF /* Pods_3rd_Eye.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_3rd_Eye.framework; path = "Pods-3rd Eye.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1B20C64D8E1D6A68A1E5C60F4D37DFF /* Pods_3rd_Eye.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_3rd_Eye.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B27638621B56CE2FC64D0357FEBDB38A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BAB038A9470FADAF1F7B5CCEB630B487 /* Pods-3rd EyeUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-3rd EyeUITests-frameworks.sh"; sourceTree = "<group>"; };
 		BDB84B5078FE6DECC1B44A93719AF332 /* Pods-3rd EyeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-3rd EyeTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -73,7 +74,7 @@
 		E05B778E1B37985EBC078D0C5BA74992 /* Toast-Swift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Toast-Swift-dummy.m"; sourceTree = "<group>"; };
 		E780C1C2A41D03ACD8C1883309A31B33 /* Pods-3rd EyeTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-3rd EyeTests-resources.sh"; sourceTree = "<group>"; };
 		E7AAE06F650A9AA771D19EAF876DDC8B /* Pods-3rd EyeTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-3rd EyeTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		EE18B53B4D5DBDC5263EE6262E2583DD /* Toast-Swift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Toast-Swift.modulemap"; sourceTree = "<group>"; };
+		EE18B53B4D5DBDC5263EE6262E2583DD /* Toast-Swift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Toast-Swift.modulemap"; sourceTree = "<group>"; };
 		F3A4F5EBB0FE9E4BDF31BAF3FB9D9145 /* Pods-3rd Eye-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-3rd Eye-acknowledgements.plist"; sourceTree = "<group>"; };
 		F7D354D6E7234D6702DAFA8E6BDBD72A /* Pods-3rd EyeUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-3rd EyeUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		F86CECB1AA103E218D5D7C0BCD22159D /* Pods-3rd Eye-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-3rd Eye-dummy.m"; sourceTree = "<group>"; };
@@ -180,7 +181,6 @@
 				9F6068E46F837C6016823EBEE5392A58 /* Toast.swift */,
 				91FFC9D276F2D51EC5F3FF59947B6F5A /* Support Files */,
 			);
-			name = "Toast-Swift";
 			path = "Toast-Swift";
 			sourceTree = "<group>";
 		};
@@ -411,6 +411,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F722FF0E384A3A60AED95C743A9A7D1B /* Pods-3rd Eye-dummy.m in Sources */,
+				73D554D01FC2165A003F3614 /* Toast.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

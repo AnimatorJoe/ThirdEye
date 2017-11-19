@@ -1,8 +1,8 @@
 //
-//  ViewController.swift
+//  VisualSupportViewController.swift
 //  3rd Eye
 //
-//  Created by Joseph Jin on 10/5/17.
+//  Created by Joseph Jin on 11/19/17.
 //  Copyright © 2017 WestlakeAPC. All rights reserved.
 //
 
@@ -11,14 +11,14 @@ import AVKit
 import Vision
 import Toast_Swift
 
-class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+class VisualSupportViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     @IBOutlet var guessLabel: UILabel!
     let synth = AVSpeechSynthesizer()
     var identificationRequested = false
     var requestToast: UIView!
     
-    let coreML = RecognitionModel.coreML
+    let currentModel = RecognitionModel.microsoftAnalyze
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,37 +28,35 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     // Set up camera access
     func setCameraAccess() {
-        if coreML == .coreML {
+            
+        // Set up capture session
+        let captureSession = AVCaptureSession()
+        //captureSession.sessionPreset = .photo
+            
+        guard let captureDevice = AVCaptureDevice.default(for: .video) else { return }
+        guard let input = try? AVCaptureDeviceInput(device: captureDevice) else { return }
+        captureSession.addInput(input)
+            
+        captureSession.startRunning()
+            
+        // Show camera input to view
+        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        previewLayer.frame = view.frame
+            
+        view.layer.addSublayer(previewLayer)
+        view.addSubview(guessLabel)
+            
+        // Extractiong and analysing image
+        let dataOutput = AVCaptureVideoDataOutput()
+        dataOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoQueue"))
+        captureSession.addOutput(dataOutput)
         
-            // Set up capture session
-            let captureSession = AVCaptureSession()
-            //captureSession.sessionPreset = .photo
-            
-            guard let captureDevice = AVCaptureDevice.default(for: .video) else { return }
-            guard let input = try? AVCaptureDeviceInput(device: captureDevice) else { return }
-            captureSession.addInput(input)
-            
-            captureSession.startRunning()
-            
-            // Show camera input to view
-            let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-            previewLayer.frame = view.frame
-            
-            view.layer.addSublayer(previewLayer)
-            view.addSubview(guessLabel)
-            
-            // Extractiong and analysing image
-            let dataOutput = AVCaptureVideoDataOutput()
-            dataOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoQueue"))
-            captureSession.addOutput(dataOutput)
-            
-        }
     }
     
     // Called everytime camera updates frame
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         
-        if coreML == .coreML {
+        if model == RecognitionModel.coreMLResnet50 {
             
             
             if !identificationRequested { return }
@@ -105,7 +103,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
         
     }
-
+    
     // Ask for a reuqest
     func promptForRequest() {
         self.identificationRequested = false
@@ -124,7 +122,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         identificationRequested = true
         self.guessLabel.text = "Requesting..."
-     
+        
         self.view.hideToast(requestToast)
         
     }
@@ -133,7 +131,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
+
 
