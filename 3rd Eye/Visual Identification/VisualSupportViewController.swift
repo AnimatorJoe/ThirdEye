@@ -11,7 +11,7 @@ import AVKit
 import Vision
 import Toast_Swift
 
-class VisualSupportViewController: VisionViewController{
+class VisualSupportViewController: VisionViewController, AVCapturePhotoCaptureDelegate{
     
     @IBOutlet var guessLabel: UILabel!
     let synth = AVSpeechSynthesizer()
@@ -24,6 +24,7 @@ class VisualSupportViewController: VisionViewController{
     var photoOutput: AVCapturePhotoOutput?
     var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
     
+    var capturedImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +57,7 @@ class VisualSupportViewController: VisionViewController{
             captureSession.addInput(captureDeviceInput)
             photoOutput = AVCapturePhotoOutput()
             photoOutput?.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])], completionHandler: nil)
+            captureSession.addOutput(photoOutput!)
         } catch {
             print(error)
         }
@@ -73,9 +75,17 @@ class VisualSupportViewController: VisionViewController{
         captureSession.startRunning()
     }
     
-    
     // Make a request
     @IBAction func makeRequest(_ sender: Any) {
+        let settings = AVCapturePhotoSettings()
+        photoOutput?.capturePhoto(with: settings, delegate: self)
+    }
+    
+    // When a photo is captured
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        if let imageData = photo.fileDataRepresentation() {
+            capturedImage = UIImage(data: imageData)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -85,5 +95,3 @@ class VisualSupportViewController: VisionViewController{
     
     
 }
-
-
