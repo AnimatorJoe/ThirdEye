@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7308FC921FC240F700E7A46A /* CognitiveServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A1371FC21D1700E9535C /* CognitiveServices.swift */; };
+		7308FC931FC240FB00E7A46A /* JSONNSDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A13F1FC21D1700E9535C /* JSONNSDataExtension.swift */; };
+		7308FC941FC240FF00E7A46A /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A1411FC21D1700E9535C /* StringExtension.swift */; };
+		7308FC951FC2410500E7A46A /* AnalyzeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A1391FC21D1700E9535C /* AnalyzeImage.swift */; };
+		7308FC961FC2410500E7A46A /* GetThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A13A1FC21D1700E9535C /* GetThumbnail.swift */; };
+		7308FC971FC2410500E7A46A /* ListDomainSpecificModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A13B1FC21D1700E9535C /* ListDomainSpecificModels.swift */; };
+		7308FC981FC2410500E7A46A /* OCR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A13C1FC21D1700E9535C /* OCR.swift */; };
+		7308FC991FC2410500E7A46A /* RecognizeDomainSpecificContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A13D1FC21D1700E9535C /* RecognizeDomainSpecificContent.swift */; };
+		7308FC9A1FC2410500E7A46A /* TagImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A13E1FC21D1700E9535C /* TagImage.swift */; };
 		732917471FA3993900B286C5 /* VGG16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 732917461FA3993200B286C5 /* VGG16.mlmodel */; };
 		732AF3BB1F86DF84007F3451 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732AF3BA1F86DF84007F3451 /* AppDelegate.swift */; };
 		732AF3C01F86DF84007F3451 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 732AF3BE1F86DF84007F3451 /* Main.storyboard */; };
@@ -529,15 +538,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7308FC951FC2410500E7A46A /* AnalyzeImage.swift in Sources */,
+				7308FC9A1FC2410500E7A46A /* TagImage.swift in Sources */,
+				7308FC981FC2410500E7A46A /* OCR.swift in Sources */,
 				73D554B81FBE4A6C003F3614 /* Models.swift in Sources */,
 				7333A1451FC21F9900E9535C /* VisionViewController.swift in Sources */,
 				73A59C601F8C5B1300359728 /* Inceptionv3.mlmodel in Sources */,
 				7333A1481FC2247800E9535C /* UserMode.swift in Sources */,
 				7333A1431FC21E5200E9535C /* DeveloperModeViewController.swift in Sources */,
+				7308FC961FC2410500E7A46A /* GetThumbnail.swift in Sources */,
+				7308FC971FC2410500E7A46A /* ListDomainSpecificModels.swift in Sources */,
 				73A59BE41F8AA21B00359728 /* InitialViewController.swift in Sources */,
+				7308FC931FC240FB00E7A46A /* JSONNSDataExtension.swift in Sources */,
+				7308FC921FC240F700E7A46A /* CognitiveServices.swift in Sources */,
 				732917471FA3993900B286C5 /* VGG16.mlmodel in Sources */,
 				7333A1341FC21C4000E9535C /* VisualSupportViewController.swift in Sources */,
 				73A59C5F1F8C5B1000359728 /* Resnet50.mlmodel in Sources */,
+				7308FC941FC240FF00E7A46A /* StringExtension.swift in Sources */,
+				7308FC991FC2410500E7A46A /* RecognizeDomainSpecificContent.swift in Sources */,
 				732AF3BB1F86DF84007F3451 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

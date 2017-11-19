@@ -11,14 +11,14 @@ import AVKit
 import Vision
 import Toast_Swift
 
-class VisualSupportViewController: VisionViewController, AVCapturePhotoCaptureDelegate{
+class VisualSupportViewController: VisionViewController {
     
     @IBOutlet var guessLabel: UILabel!
     let synth = AVSpeechSynthesizer()
     var requestToast: UIView!
     
     let currentModel = RecognitionModel.microsoftAnalyze
-    var identificationRequested = false
+    var identificationPending = false
     
     var captureSession = AVCaptureSession()
     var photoOutput: AVCapturePhotoOutput?
@@ -29,7 +29,6 @@ class VisualSupportViewController: VisionViewController, AVCapturePhotoCaptureDe
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Entering Visual Support View")
-        
         setupCaptureSession()
         startSession()
     }
@@ -77,21 +76,54 @@ class VisualSupportViewController: VisionViewController, AVCapturePhotoCaptureDe
     
     // Make a request
     @IBAction func makeRequest(_ sender: Any) {
+        if identificationPending {return}
+        
+        identificationPending = true
+        self.guessLabel.text = "Pending..."
+        
         let settings = AVCapturePhotoSettings()
         photoOutput?.capturePhoto(with: settings, delegate: self)
-    }
-    
-    // When a photo is captured
-    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-        if let imageData = photo.fileDataRepresentation() {
-            capturedImage = UIImage(data: imageData)
-        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
 }
+
+extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
+    
+    // When a photo is captured
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        if let imageData = photo.fileDataRepresentation() {
+            capturedImage = UIImage(data: imageData)
+        }
+        
+        // Analyze Image
+        let analyzeImage = CognitiveServices.sharedInstance.analyzeImage
+        analyzeImage.delegate = self
+        
+        let visualFeatures: [AnalyzeImage.AnalyzeImageVisualFeatures] = [.Categories, .Description, .Faces, .ImageType, .Color, .Adult]
+        let requestObject: AnalyzeImageRequestObject = (capturedImage!, visualFeatures)
+        
+        do {
+            try analyzeImage.analyzeImageWithRequestObject(requestObject, completion: { (response) in
+                DispatchQueue.main.async(execute: {
+                    self.guessLabel.text = response?.descriptionText
+                    self.identificationPending = false
+                })
+            })
+        } catch {
+            self.guessLabel.text = "An Error Occured"
+            self.identificationPending = false
+        }
+        
+    }
+}
+
+extension VisionViewController: AnalyzeImageDelegate {
+    // Analyze Image Delegate Protocal Function
+    func finnishedGeneratingObject(_ analyzeImageObject: AnalyzeImage.AnalyzeImageObject) {
+        print(analyzeImageObject)
+    }
+ }
