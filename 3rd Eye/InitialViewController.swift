@@ -11,6 +11,9 @@ import UIKit
 class InitialViewController: UIViewController {
 
     @IBOutlet var welcomeLabel: UILabel!
+    @IBOutlet var userModeButton: UIButton!
+    
+    var currentUserMode = UserMode.visualSupport
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +25,33 @@ class InitialViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.performSegue(withIdentifier: "bringToCameraView", sender: nil)
+    // Change Mode
+    @IBAction func changeMode(_ sender: Any) {
+        switch currentUserMode {
+        case .visualSupport:
+            currentUserMode = .developer
+            userModeButton.setTitle("Enter as Developer", for: UIControlState.normal)
+            break
+        case .developer:
+            currentUserMode = .visualSupport
+            userModeButton.setTitle("Enter as Visually Impared", for: UIControlState.normal)
+            break
+        default:
+            print("Error Switching Modes")
+        }
     }
     
     @IBAction func beginButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "bringToCameraView", sender: nil)
+        switch currentUserMode {
+        case .visualSupport:
+            self.performSegue(withIdentifier: "bringToVisualSupportView", sender: nil)
+            break
+        case .developer:
+            self.performSegue(withIdentifier: "bringToDeveloperView", sender: nil)
+            break
+        default:
+            print("[InitialViewController] Invalid user mode")
+        }
     }
     
     /*

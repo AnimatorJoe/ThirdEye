@@ -11,7 +11,7 @@ import AVKit
 import Vision
 import Toast_Swift
 
-class VisualSupportViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+class VisualSupportViewController: VisionViewController{
     
     @IBOutlet var guessLabel: UILabel!
     let synth = AVSpeechSynthesizer()
@@ -22,30 +22,31 @@ class VisualSupportViewController: UIViewController, AVCaptureVideoDataOutputSam
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("Entering Visual Support View")
         setCameraAccess()
+        view.addSubview(guessLabel)
         promptForRequest()
     }
     
     // Set up camera access
     func setCameraAccess() {
-            
+        
         // Set up capture session
         let captureSession = AVCaptureSession()
         //captureSession.sessionPreset = .photo
-            
+        
         guard let captureDevice = AVCaptureDevice.default(for: .video) else { return }
         guard let input = try? AVCaptureDeviceInput(device: captureDevice) else { return }
         captureSession.addInput(input)
-            
+        
         captureSession.startRunning()
-            
+        
         // Show camera input to view
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer.frame = view.frame
-            
+        
         view.layer.addSublayer(previewLayer)
-        view.addSubview(guessLabel)
-            
+        
         // Extractiong and analysing image
         let dataOutput = AVCaptureVideoDataOutput()
         dataOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoQueue"))
@@ -56,7 +57,7 @@ class VisualSupportViewController: UIViewController, AVCaptureVideoDataOutputSam
     // Called everytime camera updates frame
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         
-        if model == RecognitionModel.coreMLResnet50 {
+        if currentModel == RecognitionModel.coreMLResnet50 {
             
             
             if !identificationRequested { return }
