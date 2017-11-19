@@ -15,117 +15,67 @@ class VisualSupportViewController: VisionViewController{
     
     @IBOutlet var guessLabel: UILabel!
     let synth = AVSpeechSynthesizer()
-    var identificationRequested = false
     var requestToast: UIView!
     
     let currentModel = RecognitionModel.microsoftAnalyze
+    var identificationRequested = false
+    
+    var captureSession = AVCaptureSession()
+    var photoOutput: AVCapturePhotoOutput?
+    var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Entering Visual Support View")
-        setCameraAccess()
-        view.addSubview(guessLabel)
-        promptForRequest()
+        
+        setupCaptureSession()
+        startSession()
     }
     
-    // Set up camera access
-    func setCameraAccess() {
+    // Setup Capture Session
+    func setupCaptureSession(){
+        // Create Session
+        captureSession.sessionPreset = AVCaptureSession.Preset.photo
         
-        // Set up capture session
-        let captureSession = AVCaptureSession()
-        //captureSession.sessionPreset = .photo
+        // Choose Device
+        let deciveDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInWideAngleCamera], mediaType: .video, position: .unspecified)
+        let devices = deciveDiscoverySession.devices
         
-        guard let captureDevice = AVCaptureDevice.default(for: .video) else { return }
-        guard let input = try? AVCaptureDeviceInput(device: captureDevice) else { return }
-        captureSession.addInput(input)
+        var backCamera: AVCaptureDevice?
         
-        captureSession.startRunning()
-        
-        // Show camera input to view
-        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        previewLayer.frame = view.frame
-        
-        view.layer.addSublayer(previewLayer)
-        
-        // Extractiong and analysing image
-        let dataOutput = AVCaptureVideoDataOutput()
-        dataOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoQueue"))
-        captureSession.addOutput(dataOutput)
-        
-    }
-    
-    // Called everytime camera updates frame
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        
-        if currentModel == RecognitionModel.coreMLResnet50 {
-            
-            
-            if !identificationRequested { return }
-            
-            //print("Capturing frame at \(Date())")
-            
-            guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-            
-            guard let model = try? VNCoreMLModel(for: Resnet50().model) else { return }
-            
-            let request = VNCoreMLRequest(model: model) { (finishedReq, err) in
-                guard let results = finishedReq.results as? [VNClassificationObservation] else { return }
-                
-                // Obtain best guess
-                guard let firstObservation = results.first else { return }
-                
-                print(firstObservation.identifier, firstObservation.confidence)
-                
-                // Present Guess
-                DispatchQueue.main.async {
-                    if (firstObservation.confidence * 100 > 50 && self.identificationRequested){
-                        self.guessLabel.text = """
-                        Guess: \(firstObservation.identifier)
-                        Confidence: \(firstObservation.confidence * 100)%
-                        """
-                        
-                        print("Say: \(firstObservation.identifier)")
-                        
-                        let speech = AVSpeechUtterance(string: firstObservation.identifier)
-                        speech.rate = 0.25
-                        speech.pitchMultiplier = 0.5
-                        speech.volume = 0.75
-                        
-                        self.synth.speak(speech)
-                        
-                        self.promptForRequest()
-                        
-                    }
-                }
-                
+        for device in devices {
+            if device.position == AVCaptureDevice.Position.back {
+                backCamera = device
             }
-            
-            try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
         }
         
-    }
-    
-    // Ask for a reuqest
-    func promptForRequest() {
-        self.identificationRequested = false
+        // Set Input and Output
         do {
-            requestToast = try self.view.toastViewForMessage("Tap to Request an Identification", title: nil, image: nil, style: ToastManager.shared.style)
+            let captureDeviceInput = try AVCaptureDeviceInput(device: backCamera!)
+            captureSession.addInput(captureDeviceInput)
+            photoOutput = AVCapturePhotoOutput()
+            photoOutput?.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])], completionHandler: nil)
         } catch {
-            return
+            print(error)
         }
         
-        self.view.showToast(requestToast, duration: 5, position: .center, completion: nil)
+        // Set up preview layer
+        cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        cameraPreviewLayer?.videoGravity = .resizeAspectFill
+        cameraPreviewLayer?.connection?.videoOrientation = .portrait
+        cameraPreviewLayer?.frame = self.view.frame
+        self.view.layer.insertSublayer(cameraPreviewLayer!, at: 0)
     }
     
-    // When a Request in Made
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if self.synth.isSpeaking || identificationRequested {return}
-        
-        identificationRequested = true
-        self.guessLabel.text = "Requesting..."
-        
-        self.view.hideToast(requestToast)
-        
+    // Start Session
+    func startSession(){
+        captureSession.startRunning()
+    }
+    
+    
+    // Make a request
+    @IBAction func makeRequest(_ sender: Any) {
     }
     
     override func didReceiveMemoryWarning() {

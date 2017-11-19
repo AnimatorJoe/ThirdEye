@@ -103,11 +103,29 @@
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MfS-1b-ZTF">
+                                <rect key="frame" x="147" y="567" width="80" height="80"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="6Ba-36-7Uz"/>
+                                    <constraint firstAttribute="width" constant="80" id="wy2-gU-I0H"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="makeRequest:" destination="jwP-zA-I6r" eventType="touchUpInside" id="kJn-Oa-0Zu"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="KfB-9J-ilA" firstAttribute="top" secondItem="bjw-bQ-8fx" secondAttribute="bottom" constant="20" id="FZO-jA-cgQ"/>
                             <constraint firstItem="KfB-9J-ilA" firstAttribute="leading" secondItem="Vve-0g-mtT" secondAttribute="leading" constant="10" id="W3e-1O-Wid"/>
+                            <constraint firstItem="MfS-1b-ZTF" firstAttribute="centerX" secondItem="Vve-0g-mtT" secondAttribute="centerX" id="r39-Xq-9M3"/>
+                            <constraint firstItem="4Qp-cA-Rat" firstAttribute="top" secondItem="MfS-1b-ZTF" secondAttribute="bottom" constant="20" id="s8C-QE-Z7o"/>
                             <constraint firstAttribute="trailing" secondItem="KfB-9J-ilA" secondAttribute="trailing" constant="10" id="uId-Fz-s6P"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YvR-MX-Gzy"/>
