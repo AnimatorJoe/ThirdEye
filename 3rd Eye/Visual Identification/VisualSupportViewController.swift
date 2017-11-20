@@ -14,6 +14,8 @@ import Toast_Swift
 class VisualSupportViewController: VisionViewController {
     
     @IBOutlet var guessLabel: UILabel!
+    @IBOutlet var captureButton: UIButton!
+    
     let synth = AVSpeechSynthesizer()
     var requestToast: UIView!
     
@@ -77,6 +79,8 @@ class VisualSupportViewController: VisionViewController {
     // Make a request
     @IBAction func makeRequest(_ sender: Any) {
         if identificationPending {return}
+        
+        captureButton.flash()
         
         identificationPending = true
         self.guessLabel.text = "Pending..."

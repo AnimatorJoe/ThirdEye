@@ -82,6 +82,7 @@
         <!--Visual Support View Controller-->
         <scene sceneID="wX3-YV-DIP">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7aN-C6-oTh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="jwP-zA-I6r" customClass="VisualSupportViewController" customModule="_rd_Eye" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bjw-bQ-8fx"/>
@@ -103,13 +104,16 @@
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MfS-1b-ZTF">
+                            <button opaque="NO" clipsSubviews="YES" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MfS-1b-ZTF">
                                 <rect key="frame" x="147" y="567" width="80" height="80"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="6Ba-36-7Uz"/>
                                     <constraint firstAttribute="width" constant="80" id="wy2-gU-I0H"/>
                                 </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="40"/>
@@ -131,10 +135,10 @@
                         <viewLayoutGuide key="safeArea" id="YvR-MX-Gzy"/>
                     </view>
                     <connections>
+                        <outlet property="captureButton" destination="MfS-1b-ZTF" id="fbb-QI-2h6"/>
                         <outlet property="guessLabel" destination="KfB-9J-ilA" id="EDn-T5-Vm9"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7aN-C6-oTh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1393" y="-152"/>
         </scene>
