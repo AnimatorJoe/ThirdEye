@@ -129,18 +129,14 @@ class VisualSupportViewController: VisionViewController {
         if !identificationPending && blurEffect.effect != nil{
             hideIdentificationView()
         } else if identificationPending && blurEffect.effect != nil {
-            //identificationPending = false
-            //hideIdentificationView()
+            identificationPending = false
+            hideIdentificationView()
         }
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if !identificationPending && blurEffect.effect != nil{
-            hideIdentificationView()
-        } else if identificationPending && blurEffect.effect != nil {
-            //identificationPending = false
-            //hideIdentificationView()
-        }
+        dismissIDView(self)
     }
     
     // Make a request
@@ -170,9 +166,14 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
     
     // When a photo is captured
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        
+        var requestImage = UIImage()
+        
         if let imageData = photo.fileDataRepresentation() {
             capturedImage = UIImage(data: imageData)
+            requestImage = UIImage(data: imageData)!
         }
+        
         
         // Analyze Image
         let analyzeImage = CognitiveServices.sharedInstance.analyzeImage
@@ -185,13 +186,18 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
             // Read in Result
             try analyzeImage.analyzeImageWithRequestObject(requestObject, completion: { (response) in
                 DispatchQueue.main.async(execute: {
-                    if self.identificationPending {
+                
+                    var imageData = UIImagePNGRepresentation(requestImage)
+                    
+                    if self.identificationPending && (imageData?.elementsEqual(UIImagePNGRepresentation(self.capturedImage!)!))! {
                         self.guessLabel.text = response?.descriptionText
                         self.identificationText.text = response?.descriptionText
                         self.identificationText.isHidden = false
                         self.loadIndicator.stopAnimating()
                         self.loadIndicator.isHidden = true
                         self.identificationPending = false
+                    } else {
+                        print("Dismissing Response \(Date()) + \(response!.descriptionText!)")
                     }
                 })
             })
@@ -207,6 +213,6 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
 extension VisionViewController: AnalyzeImageDelegate {
     // Analyze Image Delegate Protocal Function
     func finnishedGeneratingObject(_ analyzeImageObject: AnalyzeImage.AnalyzeImageObject) {
-        print(analyzeImageObject)
+        //print(analyzeImageObject)
     }
  }
