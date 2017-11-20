@@ -15,9 +15,13 @@ class VisualSupportViewController: VisionViewController {
     
     @IBOutlet var guessLabel: UILabel!
     @IBOutlet var captureButton: UIButton!
+    @IBOutlet var blurEffect: UIVisualEffectView!
+    @IBOutlet var identificationView: UIView!
+    @IBOutlet var identificationText: UILabel!
+    
+    var effect: UIVisualEffect!
     
     let synth = AVSpeechSynthesizer()
-    var requestToast: UIView!
     
     let currentModel = RecognitionModel.microsoftAnalyze
     var identificationPending = false
@@ -31,6 +35,8 @@ class VisualSupportViewController: VisionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Entering Visual Support View")
+        
+        setBlur()
         setupCaptureSession()
         startSession()
     }
@@ -76,14 +82,54 @@ class VisualSupportViewController: VisionViewController {
         captureSession.startRunning()
     }
     
+    // Setup Blur Effect
+    func setBlur() {
+        effect = blurEffect.effect
+        blurEffect.effect = nil
+    }
+    
+    // Show Identification
+    func showIdentificationView() {
+        
+        self.view.addSubview(identificationView)
+        identificationView.center = self.view.center
+        
+        identificationView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        identificationView.alpha = 0
+        
+        UIView.animate(withDuration: 0.4) {
+            self.blurEffect.effect = self.effect
+            
+            self.identificationView.alpha = 1
+            self.identificationView.transform = CGAffineTransform.identity
+        }
+        
+        
+    }
+    
+    // Hide or Dismiss Identification
+    func hideIdentificationView() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.identificationView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+            self.identificationView.alpha = 0
+            
+            self.blurEffect.effect = nil
+            
+        }) { (success:Bool) in
+            self.identificationView.removeFromSuperview()
+        }
+    }
+    
     // Make a request
     @IBAction func makeRequest(_ sender: Any) {
         if identificationPending {return}
         
         captureButton.flash()
+        showIdentificationView()
         
         identificationPending = true
         self.guessLabel.text = "Pending..."
+        self.identificationText.text = "Pending..."
         
         let settings = AVCapturePhotoSettings()
         photoOutput?.capturePhoto(with: settings, delegate: self)
@@ -114,6 +160,7 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
             try analyzeImage.analyzeImageWithRequestObject(requestObject, completion: { (response) in
                 DispatchQueue.main.async(execute: {
                     self.guessLabel.text = response?.descriptionText
+                    self.identificationText.text = response?.descriptionText
                     self.identificationPending = false
                 })
             })

@@ -82,7 +82,6 @@
         <!--Visual Support View Controller-->
         <scene sceneID="wX3-YV-DIP">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7aN-C6-oTh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="jwP-zA-I6r" customClass="VisualSupportViewController" customModule="_rd_Eye" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bjw-bQ-8fx"/>
@@ -104,6 +103,14 @@
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qPO-tk-Hbn">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="JY6-DW-bPc">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                             <button opaque="NO" clipsSubviews="YES" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MfS-1b-ZTF">
                                 <rect key="frame" x="147" y="567" width="80" height="80"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -126,21 +133,59 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
+                            <constraint firstItem="qPO-tk-Hbn" firstAttribute="top" secondItem="Vve-0g-mtT" secondAttribute="top" id="CwM-JF-Rjw"/>
                             <constraint firstItem="KfB-9J-ilA" firstAttribute="top" secondItem="bjw-bQ-8fx" secondAttribute="bottom" constant="20" id="FZO-jA-cgQ"/>
+                            <constraint firstItem="4Qp-cA-Rat" firstAttribute="top" secondItem="qPO-tk-Hbn" secondAttribute="bottom" id="I1a-qL-aSu"/>
                             <constraint firstItem="KfB-9J-ilA" firstAttribute="leading" secondItem="Vve-0g-mtT" secondAttribute="leading" constant="10" id="W3e-1O-Wid"/>
+                            <constraint firstItem="qPO-tk-Hbn" firstAttribute="leading" secondItem="YvR-MX-Gzy" secondAttribute="leading" id="a1c-jw-5Vx"/>
                             <constraint firstItem="MfS-1b-ZTF" firstAttribute="centerX" secondItem="Vve-0g-mtT" secondAttribute="centerX" id="r39-Xq-9M3"/>
                             <constraint firstItem="4Qp-cA-Rat" firstAttribute="top" secondItem="MfS-1b-ZTF" secondAttribute="bottom" constant="20" id="s8C-QE-Z7o"/>
+                            <constraint firstItem="qPO-tk-Hbn" firstAttribute="trailing" secondItem="YvR-MX-Gzy" secondAttribute="trailing" id="sgN-2X-Wwf"/>
                             <constraint firstAttribute="trailing" secondItem="KfB-9J-ilA" secondAttribute="trailing" constant="10" id="uId-Fz-s6P"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YvR-MX-Gzy"/>
                     </view>
                     <connections>
+                        <outlet property="blurEffect" destination="qPO-tk-Hbn" id="lLj-Gt-w0F"/>
                         <outlet property="captureButton" destination="MfS-1b-ZTF" id="fbb-QI-2h6"/>
                         <outlet property="guessLabel" destination="KfB-9J-ilA" id="EDn-T5-Vm9"/>
+                        <outlet property="identificationText" destination="2h3-3J-0hh" id="cbc-Fb-xAA"/>
+                        <outlet property="identificationView" destination="woE-Hs-sG2" id="41i-J3-1ak"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7aN-C6-oTh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="woE-Hs-sG2">
+                    <rect key="frame" x="0.0" y="0.0" width="259" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="eoQ-YY-SBF">
+                            <rect key="frame" x="119" y="54" width="20" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </activityIndicatorView>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jxO-c3-oin">
+                            <rect key="frame" x="16" y="90" width="227" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <state key="normal" title="Tap Anywhere to Dismiss"/>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2h3-3J-0hh">
+                            <rect key="frame" x="16" y="20" width="227" height="65"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="0.70440960570469802" colorSpace="calibratedWhite"/>
+                    <viewLayoutGuide key="safeArea" id="IWI-G0-Yse"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
             </objects>
-            <point key="canvasLocation" x="1393" y="-152"/>
+            <point key="canvasLocation" x="1392.8" y="-152.47376311844079"/>
         </scene>
         <!--Developer Mode View Controller-->
         <scene sceneID="6MU-bS-le1">
