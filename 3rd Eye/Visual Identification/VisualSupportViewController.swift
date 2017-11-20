@@ -187,7 +187,7 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
             try analyzeImage.analyzeImageWithRequestObject(requestObject, completion: { (response) in
                 DispatchQueue.main.async(execute: {
                 
-                    var imageData = UIImagePNGRepresentation(requestImage)
+                    let imageData = UIImagePNGRepresentation(requestImage)
                     
                     if self.identificationPending && (imageData?.elementsEqual(UIImagePNGRepresentation(self.capturedImage!)!))! {
                         self.guessLabel.text = response?.descriptionText
