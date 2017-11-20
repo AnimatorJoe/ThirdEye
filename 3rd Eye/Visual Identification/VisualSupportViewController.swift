@@ -125,12 +125,21 @@ class VisualSupportViewController: VisionViewController {
         
     }
     
+    @IBAction func dismissIDView(_ sender: Any) {
+        if !identificationPending && blurEffect.effect != nil{
+            hideIdentificationView()
+        } else if identificationPending && blurEffect.effect != nil {
+            //identificationPending = false
+            //hideIdentificationView()
+        }
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !identificationPending && blurEffect.effect != nil{
             hideIdentificationView()
         } else if identificationPending && blurEffect.effect != nil {
-            identificationPending = false
-            hideIdentificationView()
+            //identificationPending = false
+            //hideIdentificationView()
         }
     }
     
