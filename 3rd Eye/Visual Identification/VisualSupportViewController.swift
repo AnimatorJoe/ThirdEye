@@ -18,6 +18,7 @@ class VisualSupportViewController: VisionViewController {
     @IBOutlet var blurEffect: UIVisualEffectView!
     @IBOutlet var identificationView: UIView!
     @IBOutlet var identificationText: UILabel!
+    @IBOutlet var loadIndicator: UIActivityIndicatorView!
     
     var effect: UIVisualEffect!
     
@@ -104,6 +105,7 @@ class VisualSupportViewController: VisionViewController {
             self.identificationView.transform = CGAffineTransform.identity
         }
         
+        captureButton.isEnabled = false
         
     }
     
@@ -118,6 +120,18 @@ class VisualSupportViewController: VisionViewController {
         }) { (success:Bool) in
             self.identificationView.removeFromSuperview()
         }
+        
+        captureButton.isEnabled = true
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if !identificationPending && blurEffect.effect != nil{
+            hideIdentificationView()
+        } else if identificationPending && blurEffect.effect != nil {
+            identificationPending = false
+            hideIdentificationView()
+        }
     }
     
     // Make a request
@@ -129,7 +143,9 @@ class VisualSupportViewController: VisionViewController {
         
         identificationPending = true
         self.guessLabel.text = "Pending..."
-        self.identificationText.text = "Pending..."
+        self.identificationText.isHidden = true
+        self.loadIndicator.startAnimating()
+        self.loadIndicator.isHidden = false
         
         let settings = AVCapturePhotoSettings()
         photoOutput?.capturePhoto(with: settings, delegate: self)
@@ -157,15 +173,22 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
         let requestObject: AnalyzeImageRequestObject = (capturedImage!, visualFeatures)
         
         do {
+            // Read in Result
             try analyzeImage.analyzeImageWithRequestObject(requestObject, completion: { (response) in
                 DispatchQueue.main.async(execute: {
-                    self.guessLabel.text = response?.descriptionText
-                    self.identificationText.text = response?.descriptionText
-                    self.identificationPending = false
+                    if self.identificationPending {
+                        self.guessLabel.text = response?.descriptionText
+                        self.identificationText.text = response?.descriptionText
+                        self.identificationText.isHidden = false
+                        self.loadIndicator.stopAnimating()
+                        self.loadIndicator.isHidden = true
+                        self.identificationPending = false
+                    }
                 })
             })
         } catch {
             self.guessLabel.text = "An Error Occured"
+            self.identificationText.text = "An Error Occured"
             self.identificationPending = false
         }
         
