@@ -19,6 +19,7 @@ class VisualSupportViewController: VisionViewController {
     @IBOutlet var identificationView: UIView!
     @IBOutlet var identificationText: UILabel!
     @IBOutlet var loadIndicator: UIActivityIndicatorView!
+    @IBOutlet var analyzedImage: UIImageView!
     
     var effect: UIVisualEffect!
     
@@ -87,6 +88,7 @@ class VisualSupportViewController: VisionViewController {
     func setBlur() {
         effect = blurEffect.effect
         blurEffect.effect = nil
+        analyzedImage.alpha = 0
     }
     
     // Show Identification
@@ -115,6 +117,8 @@ class VisualSupportViewController: VisionViewController {
             self.identificationView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
             self.identificationView.alpha = 0
             
+            self.analyzedImage.alpha = 0
+            
             self.blurEffect.effect = nil
             
         }) { (success:Bool) in
@@ -122,7 +126,6 @@ class VisualSupportViewController: VisionViewController {
         }
         
         captureButton.isEnabled = true
-        
     }
     
     @IBAction func dismissIDView(_ sender: Any) {
@@ -144,7 +147,6 @@ class VisualSupportViewController: VisionViewController {
         if identificationPending {return}
         
         captureButton.flash()
-        showIdentificationView()
         
         identificationPending = true
         self.guessLabel.text = "Pending..."
@@ -167,6 +169,8 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
     // When a photo is captured
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         
+        showIdentificationView()
+        
         var requestImage = UIImage()
         
         if let imageData = photo.fileDataRepresentation() {
@@ -174,6 +178,12 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
             requestImage = UIImage(data: imageData)!
         }
         
+        // Freeze Camera View
+        analyzedImage.image = self.capturedImage
+        
+        UIView.animate(withDuration: 0.4) {
+            self.analyzedImage.alpha = 1
+        }
         
         // Analyze Image
         let analyzeImage = CognitiveServices.sharedInstance.analyzeImage

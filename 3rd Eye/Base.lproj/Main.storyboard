@@ -103,6 +103,10 @@
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vev-pK-kTG">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qPO-tk-Hbn">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="JY6-DW-bPc">
@@ -146,6 +150,7 @@
                         <viewLayoutGuide key="safeArea" id="YvR-MX-Gzy"/>
                     </view>
                     <connections>
+                        <outlet property="analyzedImage" destination="Vev-pK-kTG" id="aLj-SK-Yag"/>
                         <outlet property="blurEffect" destination="qPO-tk-Hbn" id="lLj-Gt-w0F"/>
                         <outlet property="captureButton" destination="MfS-1b-ZTF" id="fbb-QI-2h6"/>
                         <outlet property="guessLabel" destination="KfB-9J-ilA" id="EDn-T5-Vm9"/>
