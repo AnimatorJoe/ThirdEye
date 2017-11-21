@@ -9,7 +9,14 @@
 import Foundation
 
 enum RecognitionModel {
-    case coreMLInceptionv3, coreMLResnet50, coreMLVGG16, microsoftAnalyze, microsoftOCR, aws
+    enum CoreMLModel {
+        case inceptionv3
+        case resnet50
+        case vgg16
+    }
+    
+    case coreML(CoreMLModel)
+    case microsoftAnalyze, microsoftOCR, aws
 }
 
 enum VoiceModel {
