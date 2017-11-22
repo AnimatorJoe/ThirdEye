@@ -212,6 +212,9 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
                             self.loadIndicator.stopAnimating()
                             self.loadIndicator.isHidden = true
                             self.identificationPending = false
+                            
+                            let _ = response?.descriptionText?.speak()
+                            
                         } else {
                             print("Dismissing Response \(Date()) + \(response!.descriptionText!)")
                         }
@@ -226,7 +229,7 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
         // For current mode as OCR
         case .microsoftOCR:
             print("Run OCR")
-            // I will write the needed code here
+            // I will write the needed code here - Joseph
             
         default:
             print("Invalid User Mode")

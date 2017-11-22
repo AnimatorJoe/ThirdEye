@@ -86,12 +86,7 @@ class DeveloperModeViewController: VisionViewController{
                         
                         print("Say: \(firstObservation.identifier)")
                         
-                        let speech = AVSpeechUtterance(string: firstObservation.identifier)
-                        speech.rate = 0.25
-                        speech.pitchMultiplier = 0.5
-                        speech.volume = 0.75
-                        
-                        self.synth.speak(speech)
+                        let _ = firstObservation.identifier.speak()
                         
                         self.promptForRequest()
                         
