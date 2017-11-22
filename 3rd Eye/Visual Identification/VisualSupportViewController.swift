@@ -184,37 +184,52 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
         UIView.animate(withDuration: 0.4) {
             self.analyzedImage.alpha = 1
         }
-        
-        // Analyze Image
-        let analyzeImage = CognitiveServices.sharedInstance.analyzeImage
-        analyzeImage.delegate = self
-        
-        let visualFeatures: [AnalyzeImage.AnalyzeImageVisualFeatures] = [.Categories, .Description, .Faces, .ImageType, .Color, .Adult]
-        let requestObject: AnalyzeImageRequestObject = (capturedImage!, visualFeatures)
-        
-        do {
-            // Read in Result
-            try analyzeImage.analyzeImageWithRequestObject(requestObject, completion: { (response) in
-                DispatchQueue.main.async(execute: {
-                
-                    let imageData = UIImagePNGRepresentation(requestImage)
-                    
-                    if self.identificationPending && (imageData?.elementsEqual(UIImagePNGRepresentation(self.capturedImage!)!))! {
-                        self.guessLabel.text = response?.descriptionText
-                        self.identificationText.text = response?.descriptionText
-                        self.identificationText.isHidden = false
-                        self.loadIndicator.stopAnimating()
-                        self.loadIndicator.isHidden = true
-                        self.identificationPending = false
-                    } else {
-                        print("Dismissing Response \(Date()) + \(response!.descriptionText!)")
-                    }
+
+        // Process Based on Current User Mode
+        switch currentModel {
+            
+        // For current mode as Analyze Image
+        case .microsoftAnalyze:
+            
+            // Analyze Image
+            let analyzeImage = CognitiveServices.sharedInstance.analyzeImage
+            analyzeImage.delegate = self
+            
+            let visualFeatures: [AnalyzeImage.AnalyzeImageVisualFeatures] = [.Categories, .Description, .Faces, .ImageType, .Color, .Adult]
+            let requestObject: AnalyzeImageRequestObject = (capturedImage!, visualFeatures)
+            
+            do {
+                // Read in Result
+                try analyzeImage.analyzeImageWithRequestObject(requestObject, completion: { (response) in
+                    DispatchQueue.main.async(execute: {
+                        
+                        let imageData = UIImagePNGRepresentation(requestImage)
+                        
+                        if self.identificationPending && (imageData?.elementsEqual(UIImagePNGRepresentation(self.capturedImage!)!))! {
+                            self.guessLabel.text = response?.descriptionText
+                            self.identificationText.text = response?.descriptionText
+                            self.identificationText.isHidden = false
+                            self.loadIndicator.stopAnimating()
+                            self.loadIndicator.isHidden = true
+                            self.identificationPending = false
+                        } else {
+                            print("Dismissing Response \(Date()) + \(response!.descriptionText!)")
+                        }
+                    })
                 })
-            })
-        } catch {
-            self.guessLabel.text = "An Error Occured"
-            self.identificationText.text = "An Error Occured"
-            self.identificationPending = false
+            } catch {
+                self.guessLabel.text = "An Error Occured"
+                self.identificationText.text = "An Error Occured"
+                self.identificationPending = false
+            }
+
+        // For current mode as OCR
+        case .microsoftOCR:
+            print("Run OCR")
+            // I will write the needed code here
+            
+        default:
+            print("Invalid User Mode")
         }
         
     }
