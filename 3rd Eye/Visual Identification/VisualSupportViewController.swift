@@ -113,6 +113,7 @@ class VisualSupportViewController: VisionViewController {
     
     // Hide or Dismiss Identification
     func hideIdentificationView() {
+        
         UIView.animate(withDuration: 0.3, animations: {
             self.identificationView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
             self.identificationView.alpha = 0
@@ -132,6 +133,7 @@ class VisualSupportViewController: VisionViewController {
         if !identificationPending && blurEffect.effect != nil{
             hideIdentificationView()
         } else if identificationPending && blurEffect.effect != nil {
+            let _ = "Identification cancelled".speak()
             identificationPending = false
             hideIdentificationView()
         }
@@ -168,6 +170,8 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
     
     // When a photo is captured
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        
+        let _ = "Identifying".speak()
         
         showIdentificationView()
         
