@@ -179,7 +179,7 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
         
         if let imageData = photo.fileDataRepresentation() {
             capturedImage = UIImage(data: imageData)
-            requestImage = UIImage(data: imageData)!
+            requestImage = capturedImage!
         }
         
         // Freeze Camera View
@@ -189,6 +189,7 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
             self.analyzedImage.alpha = 1
         }
 
+        
         // Process Based on Current User Mode
         switch currentModel {
             
@@ -207,9 +208,7 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
                 try analyzeImage.analyzeImageWithRequestObject(requestObject, completion: { (response) in
                     DispatchQueue.main.async(execute: {
                         
-                        let imageData = UIImagePNGRepresentation(requestImage)
-                        
-                        if self.identificationPending && (imageData?.elementsEqual(UIImagePNGRepresentation(self.capturedImage!)!))! {
+                        if self.identificationPending && requestImage.isEqual(self.capturedImage) {
                             self.guessLabel.text = response?.descriptionText
                             self.identificationText.text = response?.descriptionText
                             self.identificationText.isHidden = false
