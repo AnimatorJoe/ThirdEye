@@ -237,7 +237,7 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
             print("Run OCR")
             let resizedImage = requestImage.resized(withPercentage: 0.25)
             
-            let requestObject: OCRRequestObject = (resource: UIImagePNGRepresentation(resizedImage!)!, language: .Automatic, detectOrientation: true)
+            let requestObject: OCRRequestObject = (resource: UIImagePNGRepresentation(resizedImage!)!, language: .English, detectOrientation: true)
             
             print("Resized Image Size \(String(describing: resizedImage?.size.width)) X \(String(describing: resizedImage?.size.height))")
             
