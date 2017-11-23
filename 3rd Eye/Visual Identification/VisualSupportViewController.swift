@@ -25,7 +25,10 @@ class VisualSupportViewController: VisionViewController {
     
     let synth = AVSpeechSynthesizer()
     
-    let currentModel = RecognitionModel.microsoftAnalyze
+    let currentModel = RecognitionModel.microsoftOCR
+    
+    let ocr = CognitiveServices.sharedInstance.ocr
+    
     var identificationPending = false
     
     var captureSession = AVCaptureSession()
@@ -232,7 +235,32 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
         // For current mode as OCR
         case .microsoftOCR:
             print("Run OCR")
-            // I will write the needed code here - Joseph
+            let resizedImage = requestImage.resized(withPercentage: 0.25)
+            
+            let requestObject: OCRRequestObject = (resource: UIImagePNGRepresentation(resizedImage!)!, language: .Automatic, detectOrientation: true)
+            
+            print("Resized Image Size \(String(describing: resizedImage?.size.width)) X \(String(describing: resizedImage?.size.height))")
+            
+            try! ocr.recognizeCharactersWithRequestObject(requestObject, completion: { (response) in
+                if (response != nil){
+                    if self.identificationPending && requestImage.isEqual(self.capturedImage) {
+                        
+                        let text = self.ocr.extractStringFromDictionary(response!)
+                        
+                        self.guessLabel.text = text
+                        self.identificationText.text = text
+                        self.identificationText.isHidden = false
+                        self.loadIndicator.stopAnimating()
+                        self.loadIndicator.isHidden = true
+                        self.identificationPending = false
+                        
+                        let _ = text.speak()
+                        
+                    } else {
+                        print("Dismissing Response \(Date()) + \(response!.description)")
+                    }
+                }
+            })
             
         default:
             print("Invalid User Mode")
