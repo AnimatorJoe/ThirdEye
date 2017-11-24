@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "blank-home-button.png",
+      "filename" : "home-button.png",
       "scale" : "1x"
     },
     {
