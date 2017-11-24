@@ -46,6 +46,16 @@ class VisualSupportViewController: VisionViewController {
         startSession()
     }
     
+    // Exit View
+    @IBAction func exitView(_ sender: Any) {
+        let _ = "Exiting camera view".speak()
+        
+        self.dismiss(animated: true) {
+            self.identificationPending = false
+            self.captureSession.stopRunning()
+        }
+    }
+    
     // Setup Capture Session
     func setupCaptureSession(){
         // Create Session
@@ -212,6 +222,11 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
                     DispatchQueue.main.async(execute: {
                         
                         if self.identificationPending && requestImage.isEqual(self.capturedImage) {
+                            
+                            if response?.descriptionText == "" {
+                                let _ = "No object identified".speak()
+                            }
+                            
                             self.guessLabel.text = response?.descriptionText
                             self.identificationText.text = response?.descriptionText
                             self.identificationText.isHidden = false
@@ -246,6 +261,10 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
                     if self.identificationPending && requestImage.isEqual(self.capturedImage) {
                         
                         let text = self.ocr.extractStringFromDictionary(response!)
+                        
+                        if text == "" {
+                            let _ = "No text identified".speak()
+                        }
                         
                         self.guessLabel.text = text
                         self.identificationText.text = text
