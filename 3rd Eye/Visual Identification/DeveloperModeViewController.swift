@@ -57,8 +57,8 @@ class DeveloperModeViewController: VisionViewController{
     // Called everytime camera updates frame
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         
-        if currentModel == RecognitionModel.coreML(.resnet50) {
-            
+        //if currentModel == RecognitionModel.coreML(.resnet50) {
+        if true {
             
             if !identificationRequested { return }
             

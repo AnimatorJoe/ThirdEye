@@ -20,12 +20,14 @@ class VisualSupportViewController: VisionViewController {
     @IBOutlet var identificationText: UILabel!
     @IBOutlet var loadIndicator: UIActivityIndicatorView!
     @IBOutlet var analyzedImage: UIImageView!
+    @IBOutlet var modeButtons: [UIButton]!
+    
     
     var effect: UIVisualEffect!
     
     let synth = AVSpeechSynthesizer()
     
-    let currentModel = RecognitionModel.microsoftOCR
+    var currentModel = RecognitionModel.microsoftOCR
     
     let ocr = CognitiveServices.sharedInstance.ocr
     
@@ -44,16 +46,6 @@ class VisualSupportViewController: VisionViewController {
         setBlur()
         setupCaptureSession()
         startSession()
-    }
-    
-    // Exit View
-    @IBAction func exitView(_ sender: Any) {
-        let _ = "Exiting camera view".speak()
-        
-        self.dismiss(animated: true) {
-            self.identificationPending = false
-            self.captureSession.stopRunning()
-        }
     }
     
     // Setup Capture Session
@@ -102,6 +94,33 @@ class VisualSupportViewController: VisionViewController {
         effect = blurEffect.effect
         blurEffect.effect = nil
         analyzedImage.alpha = 0
+    }
+    
+    // Show Model Options
+    @IBAction func changeUserMode(_ sender: Any) {
+        modeButtons.forEach { (button) in
+            UIView.animate(withDuration: 0.3, animations: {
+                button.isHidden = !button.isHidden
+                
+                if button.alpha == 0 {
+                    button.alpha = 1
+                } else if button.alpha == 1 {
+                    button.alpha = 0
+                }
+                
+                self.view.layoutIfNeeded()
+            })
+        }
+    }
+    
+    // Selected New Model
+    @IBAction func modeSelected(_ sender: Any) {
+        guard let option = (sender as! UIButton).currentTitle, let model = RecognitionModel(rawValue: option) else {
+            return
+        }
+        
+        let _ = "Switching to \(option)".speak()
+        currentModel = model
     }
     
     // Show Identification
@@ -171,6 +190,21 @@ class VisualSupportViewController: VisionViewController {
         
         let settings = AVCapturePhotoSettings()
         photoOutput?.capturePhoto(with: settings, delegate: self)
+    }
+    
+    // Capture
+    func capture(FromButtonTap tap: Bool) {
+        
+    }
+    
+    // Exit View
+    @IBAction func exitView(_ sender: Any) {
+        let _ = "Exiting camera view".speak()
+        
+        self.dismiss(animated: true) {
+            self.identificationPending = false
+            self.captureSession.stopRunning()
+        }
     }
     
     override func didReceiveMemoryWarning() {

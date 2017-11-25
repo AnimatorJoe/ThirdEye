@@ -8,15 +8,15 @@
 
 import Foundation
 
-enum RecognitionModel {
-    enum CoreMLModel {
-        case inceptionv3
-        case resnet50
-        case vgg16
-    }
+enum RecognitionModel: String {
     
-    case coreML(CoreMLModel)
-    case microsoftAnalyze, microsoftOCR, aws
+    case inceptionv3 = "Inceptionv3"
+    case resnet50 = "Resnet50"
+    case vgg16 = "VGG16"
+    
+    case microsoftAnalyze = "Analyze Objects"
+    case microsoftOCR = "Analyze Text"
+    case aws = "Amazon"
 }
 
 enum VoiceModel {
