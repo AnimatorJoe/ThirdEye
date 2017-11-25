@@ -15,6 +15,7 @@ class VisualSupportViewController: VisionViewController {
     
     @IBOutlet var guessLabel: UILabel!
     @IBOutlet var captureButton: UIButton!
+    @IBOutlet var chooseNewModel: UIButton!
     @IBOutlet var blurEffect: UIVisualEffectView!
     @IBOutlet var identificationView: UIView!
     @IBOutlet var identificationText: UILabel!
@@ -33,6 +34,7 @@ class VisualSupportViewController: VisionViewController {
     
     var identificationPending = false
     var showingResultView = false
+    var showingModelOptions = false
     
     var captureSession = AVCaptureSession()
     var photoOutput: AVCapturePhotoOutput?
@@ -99,14 +101,22 @@ class VisualSupportViewController: VisionViewController {
     
     // Show Model Options
     @IBAction func changeUserMode(_ sender: Any) {
+        if identificationPending || showingResultView { return }
+        
+        if !showingModelOptions {
+            let _ = "Select a mode".speak()
+        }
+        
         modeButtons.forEach { (button) in
             UIView.animate(withDuration: 0.3, animations: {
                 button.isHidden = !button.isHidden
                 
                 if button.alpha == 0 {
                     button.alpha = 1
+                    self.showingModelOptions = true
                 } else if button.alpha == 1 {
                     button.alpha = 0
+                    self.showingModelOptions = false
                 }
                 
                 self.view.layoutIfNeeded()
@@ -114,7 +124,7 @@ class VisualSupportViewController: VisionViewController {
         }
     }
     
-    // Selected New Model
+    // When Selecting New Model
     @IBAction func modeSelected(_ sender: Any) {
         guard let option = (sender as! UIButton).currentTitle, let model = RecognitionModel(rawValue: option) else {
             return
@@ -122,6 +132,7 @@ class VisualSupportViewController: VisionViewController {
         
         let _ = "Switching to \(option)".speak()
         currentModel = model
+        changeUserMode(self)
     }
     
     // Show Identification
@@ -142,6 +153,7 @@ class VisualSupportViewController: VisionViewController {
         
         showingResultView = true
         captureButton.isEnabled = false
+        chooseNewModel.isEnabled = false
         
     }
     
@@ -162,6 +174,7 @@ class VisualSupportViewController: VisionViewController {
         
         showingResultView = false
         captureButton.isEnabled = true
+        chooseNewModel.isEnabled = true
     }
     
     @IBAction func dismissIDView(_ sender: Any) {
@@ -190,7 +203,11 @@ class VisualSupportViewController: VisionViewController {
         if sender as? UIButton == captureButton {
             captureButton.flash()
         }
-            
+        
+        if showingModelOptions {
+            changeUserMode(self)
+        }
+        
         identificationPending = true
         self.guessLabel.text = "Pending..."
         self.identificationText.isHidden = true
