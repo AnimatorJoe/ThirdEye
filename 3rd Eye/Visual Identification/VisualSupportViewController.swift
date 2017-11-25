@@ -27,11 +27,12 @@ class VisualSupportViewController: VisionViewController {
     
     let synth = AVSpeechSynthesizer()
     
-    var currentModel = RecognitionModel.microsoftOCR
+    var currentModel = RecognitionModel.microsoftAnalyze
     
     let ocr = CognitiveServices.sharedInstance.ocr
     
     var identificationPending = false
+    var showingResultView = false
     
     var captureSession = AVCaptureSession()
     var photoOutput: AVCapturePhotoOutput?
@@ -139,6 +140,7 @@ class VisualSupportViewController: VisionViewController {
             self.identificationView.transform = CGAffineTransform.identity
         }
         
+        showingResultView = true
         captureButton.isEnabled = false
         
     }
@@ -158,13 +160,14 @@ class VisualSupportViewController: VisionViewController {
             self.identificationView.removeFromSuperview()
         }
         
+        showingResultView = false
         captureButton.isEnabled = true
     }
     
     @IBAction func dismissIDView(_ sender: Any) {
-        if !identificationPending && blurEffect.effect != nil{
+        if !identificationPending && showingResultView {
             hideIdentificationView()
-        } else if identificationPending && blurEffect.effect != nil {
+        } else if identificationPending && showingResultView {
             let _ = "Identification cancelled".speak()
             identificationPending = false
             hideIdentificationView()
@@ -173,15 +176,21 @@ class VisualSupportViewController: VisionViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        dismissIDView(self)
+        if !showingResultView {
+            makeRequest(self)
+        } else {
+            dismissIDView(self)
+        }
     }
     
     // Make a request
     @IBAction func makeRequest(_ sender: Any) {
         if identificationPending {return}
         
-        captureButton.flash()
-        
+        if sender as? UIButton == captureButton {
+            captureButton.flash()
+        }
+            
         identificationPending = true
         self.guessLabel.text = "Pending..."
         self.identificationText.isHidden = true
@@ -190,11 +199,6 @@ class VisualSupportViewController: VisionViewController {
         
         let settings = AVCapturePhotoSettings()
         photoOutput?.capturePhoto(with: settings, delegate: self)
-    }
-    
-    // Capture
-    func capture(FromButtonTap tap: Bool) {
-        
     }
     
     // Exit View
