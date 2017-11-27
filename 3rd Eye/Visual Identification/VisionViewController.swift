@@ -25,3 +25,10 @@ class VisionViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }
 
 }
+
+extension VisionViewController: AnalyzeImageDelegate {
+    // Analyze Image Delegate Protocal Function
+    func finnishedGeneratingObject(_ analyzeImageObject: AnalyzeImage.AnalyzeImageObject) {
+        //print(analyzeImageObject)
+    }
+}
