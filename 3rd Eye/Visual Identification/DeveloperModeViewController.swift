@@ -376,10 +376,26 @@ extension DeveloperModeViewController: AVCapturePhotoCaptureDelegate {
         // For Resnet50
         case .resnet50:
             print("Run resnet 50")
+            // Calling MLModel to Predict Image
+            guard let prediction = try? Resnet50().prediction(image: convertImageForCoreML(requestImage, toSize: 224)) else {
+                return
+            }
+            
+            if requestImage == capturedImage {
+                self.reportAnswer(withAnswer: prediction.classLabel)
+            }
             
         // For VGG16
         case .vgg16:
             print("Run VGG16")
+            // Calling MLModel to Predict Image
+            guard let prediction = try? VGG16().prediction(image: convertImageForCoreML(requestImage, toSize: 224)) else {
+                return
+            }
+            
+            if requestImage == capturedImage {
+                self.reportAnswer(withAnswer: prediction.classLabel)
+            }
             
         default:
             print("Invalid User Mode")
