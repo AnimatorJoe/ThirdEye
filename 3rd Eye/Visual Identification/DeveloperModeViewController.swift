@@ -236,6 +236,45 @@ class DeveloperModeViewController: VisionViewController {
 
 extension DeveloperModeViewController: AVCapturePhotoCaptureDelegate {
     
+    // Converting Image
+    func convertImageForCoreML(_ image: UIImage, toSize side: Int) -> CVPixelBuffer {
+        
+        // Resize Image and Store it in newImage
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: side, height: side), true, 2.0)
+        image.draw(in: CGRect(x: 0, y: 0, width: side, height: side))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        // Convert newImage into a CVPixelBuffer
+        let attrs = [kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue, kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue] as CFDictionary
+        var pixelBuffer : CVPixelBuffer?
+        let status = CVPixelBufferCreate(kCFAllocatorDefault, Int(newImage.size.width), Int(newImage.size.height), kCVPixelFormatType_32ARGB, attrs, &pixelBuffer)
+        /*guard (status == kCVReturnSuccess) else {
+         print("R.I.P.")
+         return nil
+         }*/
+        
+        // Converting Data into a CGContext
+        CVPixelBufferLockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags(rawValue: 0))
+        let pixelData = CVPixelBufferGetBaseAddress(pixelBuffer!)
+        
+        let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
+        let context = CGContext(data: pixelData, width: Int(newImage.size.width), height: Int(newImage.size.height), bitsPerComponent: 8, bytesPerRow: CVPixelBufferGetBytesPerRow(pixelBuffer!), space: rgbColorSpace, bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue) //3
+        
+        // Rendering the Image
+        context?.translateBy(x: 0, y: newImage.size.height)
+        context?.scaleBy(x: 1.0, y: -1.0)
+        
+        UIGraphicsPushContext(context!)
+        newImage.draw(in: CGRect(x: 0, y: 0, width: newImage.size.width, height: newImage.size.height))
+        UIGraphicsPopContext()
+        CVPixelBufferUnlockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags(rawValue: 0))
+        //imageView.image = newImage
+        
+        return pixelBuffer!
+        
+    }
+    
     // When a photo is captured
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         
@@ -282,14 +321,7 @@ extension DeveloperModeViewController: AVCapturePhotoCaptureDelegate {
                                 let _ = "No object identified".speak()
                             }
                             
-                            self.guessLabel.text = response?.descriptionText
-                            self.identificationText.text = response?.descriptionText
-                            self.identificationText.isHidden = false
-                            self.loadIndicator.stopAnimating()
-                            self.loadIndicator.isHidden = true
-                            self.identificationPending = false
-                            
-                            let _ = response?.descriptionText?.speak()
+                            self.reportAnswer(withAnswer: (response?.descriptionText)!)
                             
                         } else {
                             print("Dismissing Response \(Date()) + \(response!.descriptionText!)")
@@ -321,14 +353,7 @@ extension DeveloperModeViewController: AVCapturePhotoCaptureDelegate {
                             let _ = "No text identified".speak()
                         }
                         
-                        self.guessLabel.text = text
-                        self.identificationText.text = text
-                        self.identificationText.isHidden = false
-                        self.loadIndicator.stopAnimating()
-                        self.loadIndicator.isHidden = true
-                        self.identificationPending = false
-                        
-                        let _ = text.speak()
+                        self.reportAnswer(withAnswer: text)
                         
                     } else {
                         print("Dismissing Response \(Date()) + \(response!.description)")
@@ -336,9 +361,45 @@ extension DeveloperModeViewController: AVCapturePhotoCaptureDelegate {
                 }
             })
             
+        // For Inceptionv3
+        case .inceptionv3:
+            print("Run inceptionv3")
+            // Calling MLModel to Predict Image
+            guard let prediction = try? Inceptionv3().prediction(image: convertImageForCoreML(requestImage, toSize: 299)) else {
+                return
+            }
+            
+            if requestImage == capturedImage {
+                self.reportAnswer(withAnswer: prediction.classLabel)
+            }
+            
+        // For Resnet50
+        case .resnet50:
+            print("Run resnet 50")
+            
+        // For VGG16
+        case .vgg16:
+            print("Run VGG16")
+            
         default:
             print("Invalid User Mode")
         }
         
     }
+    
+    // Report Answer
+    func reportAnswer(withAnswer text: String) {
+        
+        self.guessLabel.text = text
+        self.identificationText.text = text
+        
+        self.identificationText.isHidden = false
+        self.loadIndicator.stopAnimating()
+        
+        self.loadIndicator.isHidden = true
+        self.identificationPending = false
+        
+        let _ = text.speak()
+    }
+    
 }

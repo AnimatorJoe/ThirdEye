@@ -343,7 +343,7 @@
                                             </connections>
                                         </button>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MgC-VY-Icr">
-                                            <rect key="frame" x="20" y="20" width="255" height="360"/>
+                                            <rect key="frame" x="20" y="20" width="255" height="60"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7R-XW-KkS">
                                                     <rect key="frame" x="0.0" y="0.0" width="255" height="60"/>
@@ -364,8 +364,8 @@
                                                         <action selector="changeUserMode:" destination="5zS-Rd-Xfs" eventType="touchUpInside" id="ZwX-1r-xkg"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehD-t5-CHI">
-                                                    <rect key="frame" x="0.0" y="60" width="255" height="60"/>
+                                                <button hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehD-t5-CHI">
+                                                    <rect key="frame" x="0.0" y="-20" width="255" height="60"/>
                                                     <color key="backgroundColor" red="0.99727648499999999" green="0.49696779250000001" blue="0.32951986789999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="yTJ-5R-X2p"/>
@@ -382,8 +382,8 @@
                                                         <action selector="modeSelected:" destination="5zS-Rd-Xfs" eventType="touchUpInside" id="3Eb-Py-zmc"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q4x-8O-sAO">
-                                                    <rect key="frame" x="0.0" y="120" width="255" height="60"/>
+                                                <button hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q4x-8O-sAO">
+                                                    <rect key="frame" x="0.0" y="-20" width="255" height="60"/>
                                                     <color key="backgroundColor" red="0.99727648499999999" green="0.49696779250000001" blue="0.32951986789999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="KS4-uD-dAp"/>
@@ -400,8 +400,8 @@
                                                         <action selector="modeSelected:" destination="5zS-Rd-Xfs" eventType="touchUpInside" id="RLb-IW-Qx1"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mde-l1-1Xn">
-                                                    <rect key="frame" x="0.0" y="180" width="255" height="60"/>
+                                                <button hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mde-l1-1Xn">
+                                                    <rect key="frame" x="0.0" y="-20" width="255" height="60"/>
                                                     <color key="backgroundColor" red="0.99727648499999999" green="0.49696779250000001" blue="0.32951986789999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="6eh-mr-Mau"/>
@@ -418,8 +418,8 @@
                                                         <action selector="modeSelected:" destination="5zS-Rd-Xfs" eventType="touchUpInside" id="bAa-DB-OYF"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XpG-2Q-ulG">
-                                                    <rect key="frame" x="0.0" y="240" width="255" height="60"/>
+                                                <button hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XpG-2Q-ulG">
+                                                    <rect key="frame" x="0.0" y="-20" width="255" height="60"/>
                                                     <color key="backgroundColor" red="0.99727648499999999" green="0.49696779250000001" blue="0.32951986789999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="JW6-p3-InX"/>
@@ -436,8 +436,8 @@
                                                         <action selector="modeSelected:" destination="5zS-Rd-Xfs" eventType="touchUpInside" id="xZl-dc-y5c"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y0J-AU-p9M">
-                                                    <rect key="frame" x="0.0" y="300" width="255" height="60"/>
+                                                <button hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y0J-AU-p9M">
+                                                    <rect key="frame" x="0.0" y="-20" width="255" height="60"/>
                                                     <color key="backgroundColor" red="0.99727648499999999" green="0.49696779250000001" blue="0.32951986789999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="lnR-GR-mjr"/>
