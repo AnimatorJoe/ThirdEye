@@ -103,10 +103,6 @@ class DeveloperModeViewController: VisionViewController {
     @IBAction func changeUserMode(_ sender: Any) {
         if identificationPending || showingResultView { return }
         
-        if !showingModelOptions {
-            let _ = "Select a mode".speak()
-        }
-        
         modeButtons.forEach { (button) in
             UIView.animate(withDuration: 0.3, animations: {
                 button.isHidden = !button.isHidden
@@ -130,7 +126,6 @@ class DeveloperModeViewController: VisionViewController {
             return
         }
         
-        let _ = "Switching to \(option)".speak()
         currentModel = model
         changeUserMode(self)
     }
@@ -181,7 +176,6 @@ class DeveloperModeViewController: VisionViewController {
         if !identificationPending && showingResultView {
             hideIdentificationView()
         } else if identificationPending && showingResultView {
-            let _ = "Identification cancelled".speak()
             identificationPending = false
             hideIdentificationView()
         }
@@ -189,11 +183,7 @@ class DeveloperModeViewController: VisionViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if !showingResultView {
-            makeRequest(self)
-        } else {
-            dismissIDView(self)
-        }
+        dismissIDView(self)
     }
     
     // Make a request
@@ -220,7 +210,6 @@ class DeveloperModeViewController: VisionViewController {
     
     // Exit View
     @IBAction func exitView(_ sender: Any) {
-        let _ = "Exiting camera view".speak()
         
         self.dismiss(animated: true) {
             self.identificationPending = false
@@ -277,8 +266,6 @@ extension DeveloperModeViewController: AVCapturePhotoCaptureDelegate {
     
     // When a photo is captured
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-        
-        let _ = "Identifying".speak()
         
         showIdentificationView()
         
