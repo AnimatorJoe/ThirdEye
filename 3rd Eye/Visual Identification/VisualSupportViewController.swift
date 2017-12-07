@@ -269,7 +269,12 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
             analyzeImage.delegate = self
             
             let visualFeatures: [AnalyzeImage.AnalyzeImageVisualFeatures] = [.Categories, .Description, .Faces, .ImageType, .Color, .Adult]
-            let requestObject: AnalyzeImageRequestObject = (capturedImage!, visualFeatures)
+            
+            let uploadImage = capturedImage?.resized(withPercentage: 0.25)
+            
+            let requestObject: AnalyzeImageRequestObject = (uploadImage!, visualFeatures)
+            
+            //print(UIImagePNGRepresentation(uploadImage!)!)
             
             do {
                 // Read in Result
@@ -306,10 +311,12 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
         case .microsoftOCR:
             print("Run OCR")
             let resizedImage = requestImage.resized(withPercentage: 0.25)
+            let uploadImage = UIImagePNGRepresentation(resizedImage!)!
             
-            let requestObject: OCRRequestObject = (resource: UIImagePNGRepresentation(resizedImage!)!, language: .English, detectOrientation: true)
             
-            print("Resized Image Size \(String(describing: resizedImage?.size.width)) X \(String(describing: resizedImage?.size.height))")
+            let requestObject: OCRRequestObject = (resource: uploadImage, language: .English, detectOrientation: true)
+            
+            print(uploadImage)
             
             try! ocr.recognizeCharactersWithRequestObject(requestObject, completion: { (response) in
                 if (response != nil){
