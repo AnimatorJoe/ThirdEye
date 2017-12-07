@@ -334,10 +334,11 @@ extension DeveloperModeViewController: AVCapturePhotoCaptureDelegate {
                 if (response != nil){
                     if self.identificationPending && requestImage.isEqual(self.capturedImage) {
                         
-                        let text = self.ocr.extractStringFromDictionary(response!)
+                        var text = self.ocr.extractStringFromDictionary(response!)
                         
                         if text == "" {
                             let _ = "No text identified".speak()
+                            text = "No text identified"
                         }
                         
                         self.reportAnswer(withAnswer: text)
