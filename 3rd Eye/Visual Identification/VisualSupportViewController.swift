@@ -327,6 +327,7 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
                         
                         if text == "" {
                             let _ = "No text identified".speak()
+                            self.identificationText.text = "no text identified"
                         }
                         
                         self.guessLabel.text = text

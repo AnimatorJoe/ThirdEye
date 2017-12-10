@@ -28,7 +28,7 @@ class DeveloperModeViewController: VisionViewController {
     
     let synth = AVSpeechSynthesizer()
     
-    var currentModel = RecognitionModel.microsoftAnalyze
+    var currentModel = RecognitionModel.microsoftVision
     
     let ocr = CognitiveServices.sharedInstance.ocr
     
@@ -292,14 +292,17 @@ extension DeveloperModeViewController: AVCapturePhotoCaptureDelegate {
         switch currentModel {
             
         // For current mode as Analyze Image
-        case .microsoftAnalyze:
+        case .microsoftVision:
             
             // Analyze Image
             let analyzeImage = CognitiveServices.sharedInstance.analyzeImage
             analyzeImage.delegate = self
             
             let visualFeatures: [AnalyzeImage.AnalyzeImageVisualFeatures] = [.Categories, .Description, .Faces, .ImageType, .Color, .Adult]
-            let requestObject: AnalyzeImageRequestObject = (capturedImage!.resized(withPercentage: 50)!, visualFeatures)
+            
+            let uploadImage = capturedImage?.resized(withPercentage: 0.5)
+            
+            let requestObject: AnalyzeImageRequestObject = (uploadImage!, visualFeatures)
             
             do {
                 // Read in Result
@@ -326,7 +329,7 @@ extension DeveloperModeViewController: AVCapturePhotoCaptureDelegate {
             }
             
         // For current mode as OCR
-        case .microsoftOCR:
+        case .microsoftCharacterRecognition:
             print("Run OCR")
             let resizedImage = requestImage.resized(withPercentage: 0.25)
             

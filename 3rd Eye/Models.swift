@@ -16,6 +16,10 @@ enum RecognitionModel: String {
     
     case microsoftAnalyze = "Analyze Objects"
     case microsoftOCR = "Analyze Text"
+    
+    case microsoftVision = "Microsoft Vision"
+    case microsoftCharacterRecognition = "Microsoft OCR"
+    
     case aws = "Amazon"
 }
 
