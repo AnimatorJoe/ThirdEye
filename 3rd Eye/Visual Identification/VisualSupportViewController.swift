@@ -270,11 +270,12 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
             
             let visualFeatures: [AnalyzeImage.AnalyzeImageVisualFeatures] = [.Categories, .Description, .Faces, .ImageType, .Color, .Adult]
             
-            let uploadImage = capturedImage?.resized(withPercentage: 0.25)
+            let uploadImage = capturedImage?.resized(withPercentage: 0.5)
             
             let requestObject: AnalyzeImageRequestObject = (uploadImage!, visualFeatures)
             
             //print(UIImagePNGRepresentation(uploadImage!)!)
+            //print("Size: \(uploadImage?.size.width) X \(uploadImage?.size.height)")
             
             do {
                 // Read in Result

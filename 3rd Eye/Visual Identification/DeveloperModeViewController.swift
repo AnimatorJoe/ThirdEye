@@ -42,6 +42,10 @@ class DeveloperModeViewController: VisionViewController {
     
     var capturedImage: UIImage?
     
+    var inceptionV3 = Inceptionv3()
+    var resnet50 = Resnet50()
+    var VGG16Model = VGG16()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Entering Visual Support View")
@@ -295,7 +299,7 @@ extension DeveloperModeViewController: AVCapturePhotoCaptureDelegate {
             analyzeImage.delegate = self
             
             let visualFeatures: [AnalyzeImage.AnalyzeImageVisualFeatures] = [.Categories, .Description, .Faces, .ImageType, .Color, .Adult]
-            let requestObject: AnalyzeImageRequestObject = (capturedImage!, visualFeatures)
+            let requestObject: AnalyzeImageRequestObject = (capturedImage!.resized(withPercentage: 50)!, visualFeatures)
             
             do {
                 // Read in Result
@@ -353,7 +357,7 @@ extension DeveloperModeViewController: AVCapturePhotoCaptureDelegate {
         case .inceptionv3:
             print("Run inceptionv3")
             // Calling MLModel to Predict Image
-            guard let prediction = try? Inceptionv3().prediction(image: convertImageForCoreML(requestImage, toSize: 299)) else {
+            guard let prediction = try? inceptionV3.prediction(image: convertImageForCoreML(requestImage, toSize: 299)) else {
                 return
             }
             
@@ -365,7 +369,7 @@ extension DeveloperModeViewController: AVCapturePhotoCaptureDelegate {
         case .resnet50:
             print("Run resnet 50")
             // Calling MLModel to Predict Image
-            guard let prediction = try? Resnet50().prediction(image: convertImageForCoreML(requestImage, toSize: 224)) else {
+            guard let prediction = try? resnet50.prediction(image: convertImageForCoreML(requestImage, toSize: 224)) else {
                 return
             }
             
@@ -377,7 +381,7 @@ extension DeveloperModeViewController: AVCapturePhotoCaptureDelegate {
         case .vgg16:
             print("Run VGG16")
             // Calling MLModel to Predict Image
-            guard let prediction = try? VGG16().prediction(image: convertImageForCoreML(requestImage, toSize: 224)) else {
+            guard let prediction = try? VGG16Model.prediction(image: convertImageForCoreML(requestImage, toSize: 224)) else {
                 return
             }
             
