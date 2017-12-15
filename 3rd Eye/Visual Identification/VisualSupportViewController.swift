@@ -32,6 +32,8 @@ class VisualSupportViewController: VisionViewController {
     
     let ocr = CognitiveServices.sharedInstance.ocr
     
+    var currentUserMode = UserMode.visualSupport
+    
     var identificationPending = false
     var showingResultView = false
     var showingModelOptions = false
@@ -44,7 +46,7 @@ class VisualSupportViewController: VisionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Entering Visual Support View")
+        print("Entering View")
         
         setBlur()
         setupCaptureSession()
@@ -103,7 +105,7 @@ class VisualSupportViewController: VisionViewController {
     @IBAction func changeUserMode(_ sender: Any) {
         if identificationPending || showingResultView { return }
         
-        if !showingModelOptions {
+        if !showingModelOptions && currentUserMode == .visualSupport {
             let _ = "Select a mode".speak()
         }
         
@@ -130,7 +132,10 @@ class VisualSupportViewController: VisionViewController {
             return
         }
         
-        let _ = "Switching to \(option)".speak()
+        if currentUserMode == .visualSupport {
+            let _ = "Switching to \(option)".speak()
+        }
+        
         currentModel = model
         changeUserMode(self)
     }
@@ -181,9 +186,11 @@ class VisualSupportViewController: VisionViewController {
         if !identificationPending && showingResultView {
             hideIdentificationView()
         } else if identificationPending && showingResultView {
-            let _ = "Identification cancelled".speak()
             identificationPending = false
             hideIdentificationView()
+            if currentUserMode == .visualSupport {
+                let _ = "Identification cancelled".speak()
+            }
         }
         
     }
@@ -267,7 +274,7 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
         switch currentModel {
             
         // For current mode as Analyze Image
-        case .microsoftAnalyze:
+        case .microsoftAnalyze, .microsoftVision:
             
             // Analyze Image
             let analyzeImage = CognitiveServices.sharedInstance.analyzeImage
@@ -307,7 +314,7 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
             }
 
         // For current mode as OCR
-        case .microsoftOCR:
+        case .microsoftOCR, .microsoftCharacterRecognition:
             print("Run OCR")
             let resizedImage = requestImage.resized(withPercentage: 0.25)
             let uploadImage = UIImagePNGRepresentation(resizedImage!)!
