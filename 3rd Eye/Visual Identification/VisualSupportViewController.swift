@@ -239,8 +239,6 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
     // When a photo is captured
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         
-        let _ = "Identifying".speak()
-        
         showIdentificationView()
         
         var requestImage = UIImage()
@@ -257,6 +255,13 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
             self.analyzedImage.alpha = 1
         }
 
+        // If there is no internet connection
+        if !Reachability.isConnectedToNetwork() {
+            reportAnswer(withAnswer: "Please connect to internet.")
+            return
+        }
+        
+        let _ = "Identifying".speak()
         
         // Process Based on Current User Mode
         switch currentModel {
@@ -288,14 +293,7 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
                                 let _ = "No object identified".speak()
                             }
                             
-                            self.guessLabel.text = response?.descriptionText
-                            self.identificationText.text = response?.descriptionText
-                            self.identificationText.isHidden = false
-                            self.loadIndicator.stopAnimating()
-                            self.loadIndicator.isHidden = true
-                            self.identificationPending = false
-                            
-                            let _ = response?.descriptionText?.speak()
+                            self.reportAnswer(withAnswer: (response?.descriptionText)!)
                             
                         } else {
                             print("Dismissing Response \(Date()) + \(response!.descriptionText!)")
@@ -330,14 +328,7 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
                             self.identificationText.text = "no text identified"
                         }
                         
-                        self.guessLabel.text = text
-                        self.identificationText.text = text
-                        self.identificationText.isHidden = false
-                        self.loadIndicator.stopAnimating()
-                        self.loadIndicator.isHidden = true
-                        self.identificationPending = false
-                        
-                        let _ = text.speak()
+                        self.reportAnswer(withAnswer: text)
                         
                     } else {
                         print("Dismissing Response \(Date()) + \(response!.description)")
@@ -349,6 +340,18 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
             print("Invalid User Mode")
         }
         
+    }
+    
+    // Report Answer
+    func reportAnswer(withAnswer text: String) {
+        self.guessLabel.text = text
+        self.identificationText.text = text
+        self.identificationText.isHidden = false
+        self.loadIndicator.stopAnimating()
+        self.loadIndicator.isHidden = true
+        self.identificationPending = false
+        
+        let _ = text.speak()
     }
 }
 
