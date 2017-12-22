@@ -227,7 +227,9 @@ class VisualSupportViewController: VisionViewController {
     
     // Exit View
     @IBAction func exitView(_ sender: Any) {
-        let _ = "Exiting camera view".speak()
+        if currentUserMode == .visualSupport {
+            let _ = "Exiting camera view".speak()
+        }
         
         self.dismiss(animated: true) {
             self.identificationPending = false
