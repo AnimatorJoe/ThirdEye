@@ -17,6 +17,7 @@ class InitialViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let _ = "Tap Anywhere to Begin".speak()
         
     }
 
