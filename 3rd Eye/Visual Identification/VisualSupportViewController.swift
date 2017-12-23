@@ -188,6 +188,7 @@ class VisualSupportViewController: VisionViewController {
         } else if identificationPending && showingResultView {
             identificationPending = false
             hideIdentificationView()
+            capturedImage = nil
             if currentUserMode == .visualSupport {
                 let _ = "Identification cancelled".speak()
             }
@@ -266,7 +267,7 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
 
         // If there is no internet connection
         if !Reachability.isConnectedToNetwork() {
-            reportAnswer(withAnswer: "Please connect to internet.")
+            reportAnswer(withAnswer: "please connect to internet")
             return
         }
         
@@ -284,7 +285,7 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
             
             let visualFeatures: [AnalyzeImage.AnalyzeImageVisualFeatures] = [.Categories, .Description, .Faces, .ImageType, .Color, .Adult]
             
-            let uploadImage = capturedImage?.resized(withPercentage: 0.5)
+            let uploadImage = capturedImage?.resized(toWidth: 480)
             
             let requestObject: AnalyzeImageRequestObject = (uploadImage!, visualFeatures)
             
@@ -318,7 +319,7 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
         // For current mode as OCR
         case .microsoftOCR, .microsoftCharacterRecognition:
             print("Run OCR")
-            let resizedImage = requestImage.resized(withPercentage: 0.25)
+            let resizedImage = requestImage.resized(toWidth: 480)
             let uploadImage = UIImagePNGRepresentation(resizedImage!)!
             
             
