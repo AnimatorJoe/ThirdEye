@@ -53,7 +53,7 @@
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
-                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Avf-Yj-vcY">
+                            <button opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Avf-Yj-vcY">
                                 <rect key="frame" x="60" y="461" width="255" height="50"/>
                                 <color key="backgroundColor" red="0.2581153035" green="0.61022597710000004" blue="0.69697469729999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -67,12 +67,15 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="alpha">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="beginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZVR-uM-4IG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nDr-Ae-gQS">
+                            <button opaque="NO" alpha="0.65000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nDr-Ae-gQS">
                                 <rect key="frame" x="10" y="30" width="170" height="30"/>
                                 <color key="backgroundColor" red="0.99727648499999999" green="0.49696779250000001" blue="0.32951986789999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -87,6 +90,9 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="alpha">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="changeMode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OLA-yh-FKi"/>
@@ -97,6 +103,11 @@
                                 <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="35"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="alpha">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -121,6 +132,7 @@
                         <viewLayoutGuide key="safeArea" id="Azh-wt-un5"/>
                     </view>
                     <connections>
+                        <outlet property="beginButton" destination="Avf-Yj-vcY" id="bPl-jn-2ci"/>
                         <outlet property="userModeButton" destination="nDr-Ae-gQS" id="ZyQ-DS-IlR"/>
                         <outlet property="welcomeLabel" destination="1Pu-Op-rib" id="5hE-Dk-d7D"/>
                         <segue destination="jwP-zA-I6r" kind="showDetail" identifier="bringToVisualSupportView" action="showViewController:sender:" id="U3n-zl-NnF"/>

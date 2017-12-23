@@ -12,7 +12,10 @@ class InitialViewController: UIViewController {
 
     @IBOutlet var welcomeLabel: UILabel!
     @IBOutlet var userModeButton: UIButton!
+    @IBOutlet var beginButton: UIButton!
+    
     var isInitiallyShown = true
+    var elementsLoaded = false
     
     var currentUserMode = UserMode.visualSupport
     
@@ -23,9 +26,23 @@ class InitialViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         if isInitiallyShown {
             // Perform an action that will only be done once
-            let _ = "Tap Anywhere to Begin".speak()
             isInitiallyShown = false
+            
+            UIView.animate(withDuration: 2, animations: {
+                self.welcomeLabel.alpha = 1
+                let _ = "Welcom to Visualize".speak()
+            }, completion: { (val) in
+                
+                UIView.animate(withDuration: 0.4, animations: {
+                    self.userModeButton.alpha = 1
+                    self.beginButton.alpha = 1
+                }, completion: { (val) in
+                    let _ = "Tap Anywhere to Begin".speak()
+                    self.elementsLoaded = true
+                })
+            })
         }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,6 +67,8 @@ class InitialViewController: UIViewController {
     }
     
     @IBAction func beginButton(_ sender: Any) {
+        if !elementsLoaded {return}
+        
         switch currentUserMode {
         case .visualSupport:
             self.performSegue(withIdentifier: "bringToVisualSupportView", sender: nil)
