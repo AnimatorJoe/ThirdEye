@@ -12,13 +12,20 @@ class InitialViewController: UIViewController {
 
     @IBOutlet var welcomeLabel: UILabel!
     @IBOutlet var userModeButton: UIButton!
+    var isInitiallyShown = true
     
     var currentUserMode = UserMode.visualSupport
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let _ = "Tap Anywhere to Begin".speak()
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if isInitiallyShown {
+            // Perform an action that will only be done once
+            let _ = "Tap Anywhere to Begin".speak()
+            isInitiallyShown = false
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,6 +60,10 @@ class InitialViewController: UIViewController {
         default:
             print("[InitialViewController] Invalid user mode")
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        beginButton(self)
     }
     
     /*
