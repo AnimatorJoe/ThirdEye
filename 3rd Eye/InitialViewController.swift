@@ -28,16 +28,21 @@ class InitialViewController: UIViewController {
             // Perform an action that will only be done once
             isInitiallyShown = false
             
-            UIView.animate(withDuration: 2, animations: {
+            let _ = "Welcom to Visualize".speak()
+            
+            UIView.animate(withDuration: 1, animations: {
                 self.welcomeLabel.alpha = 1
-                let _ = "Welcom to Visualize".speak()
+                
             }, completion: { (val) in
+
+                let _ = "Tap Anywhere to Begin".speak()
                 
                 UIView.animate(withDuration: 0.4, animations: {
+                    
                     self.userModeButton.alpha = 1
                     self.beginButton.alpha = 1
+                    
                 }, completion: { (val) in
-                    let _ = "Tap Anywhere to Begin".speak()
                     self.elementsLoaded = true
                 })
             })
