@@ -743,7 +743,7 @@
 				DEVELOPMENT_TEAM = 9SR8L2XE3A;
 				INFOPLIST_FILE = "3rd Eye/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.westlakeapc.ThirdEye;
+				PRODUCT_BUNDLE_IDENTIFIER = com.westlakeapc.visualize;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -759,7 +759,7 @@
 				DEVELOPMENT_TEAM = 9SR8L2XE3A;
 				INFOPLIST_FILE = "3rd Eye/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.westlakeapc.ThirdEye;
+				PRODUCT_BUNDLE_IDENTIFIER = com.westlakeapc.visualize;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
