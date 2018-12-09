@@ -9,7 +9,6 @@
 import UIKit
 import AVKit
 import Vision
-import Toast_Swift
 
 class VisionViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate{
 

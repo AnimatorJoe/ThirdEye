@@ -28,14 +28,14 @@ class InitialViewController: UIViewController {
             // Perform an action that will only be done once
             isInitiallyShown = false
             
-            let _ = "Welcom to Visualize".speak()
+            Speaker.speak("Welcom to Visualize")
             
             UIView.animate(withDuration: 1, animations: {
                 self.welcomeLabel.alpha = 1
                 
             }, completion: { (val) in
 
-                let _ = "Tap Anywhere to Begin".speak()
+                Speaker.speak("Tap Anywhere to Begin")
                 
                 UIView.animate(withDuration: 0.4, animations: {
                     

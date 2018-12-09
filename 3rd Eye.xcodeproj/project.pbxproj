@@ -7,15 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7308FC921FC240F700E7A46A /* CognitiveServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A1371FC21D1700E9535C /* CognitiveServices.swift */; };
-		7308FC931FC240FB00E7A46A /* JSONNSDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A13F1FC21D1700E9535C /* JSONNSDataExtension.swift */; };
-		7308FC941FC240FF00E7A46A /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A1411FC21D1700E9535C /* StringExtension.swift */; };
-		7308FC951FC2410500E7A46A /* AnalyzeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A1391FC21D1700E9535C /* AnalyzeImage.swift */; };
-		7308FC961FC2410500E7A46A /* GetThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A13A1FC21D1700E9535C /* GetThumbnail.swift */; };
-		7308FC971FC2410500E7A46A /* ListDomainSpecificModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A13B1FC21D1700E9535C /* ListDomainSpecificModels.swift */; };
-		7308FC981FC2410500E7A46A /* OCR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A13C1FC21D1700E9535C /* OCR.swift */; };
-		7308FC991FC2410500E7A46A /* RecognizeDomainSpecificContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A13D1FC21D1700E9535C /* RecognizeDomainSpecificContent.swift */; };
-		7308FC9A1FC2410500E7A46A /* TagImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A13E1FC21D1700E9535C /* TagImage.swift */; };
 		7308FCA01FC267DF00E7A46A /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7308FC9F1FC267DF00E7A46A /* UIButtonExtension.swift */; };
 		7308FCDC1FC36A3F00E7A46A /* PendingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7308FCDB1FC36A3F00E7A46A /* PendingStatus.swift */; };
 		7308FCDE1FC659C300E7A46A /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7308FCDD1FC659C300E7A46A /* UIImageExtension.swift */; };
@@ -30,6 +21,16 @@
 		7333A1431FC21E5200E9535C /* DeveloperModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A1421FC21E5200E9535C /* DeveloperModeViewController.swift */; };
 		7333A1451FC21F9900E9535C /* VisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A1441FC21F9900E9535C /* VisionViewController.swift */; };
 		7333A1481FC2247800E9535C /* UserMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7333A1471FC2247800E9535C /* UserMode.swift */; };
+		734115FB21BC9DD700EAC59F /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731AFE5C205F226B008324AD /* StringExtension.swift */; };
+		734115FC21BC9DF200EAC59F /* CognitiveServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731AFE4E205F226B008324AD /* CognitiveServices.swift */; };
+		734115FD21BC9DF900EAC59F /* AnalyzeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731AFE50205F226B008324AD /* AnalyzeImage.swift */; };
+		734115FE21BC9DF900EAC59F /* GetThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731AFE51205F226B008324AD /* GetThumbnail.swift */; };
+		734115FF21BC9DF900EAC59F /* ListDomainSpecificModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731AFE53205F226B008324AD /* ListDomainSpecificModels.swift */; };
+		7341160021BC9DF900EAC59F /* OCR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731AFE54205F226B008324AD /* OCR.swift */; };
+		7341160121BC9DF900EAC59F /* RecognizeDomainSpecificContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731AFE55205F226B008324AD /* RecognizeDomainSpecificContent.swift */; };
+		7341160221BC9DF900EAC59F /* TagImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731AFE56205F226B008324AD /* TagImage.swift */; };
+		7341160321BC9DF900EAC59F /* JSONNSDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731AFE58205F226B008324AD /* JSONNSDataExtension.swift */; };
+		7341160521BCA6A800EAC59F /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7341160421BCA6A800EAC59F /* Speaker.swift */; };
 		73A59BE41F8AA21B00359728 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A59BE31F8AA21B00359728 /* InitialViewController.swift */; };
 		73A59C5F1F8C5B1000359728 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 73A59BE21F8725F500359728 /* Resnet50.mlmodel */; };
 		73A59C601F8C5B1300359728 /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 73A59BE11F8725EC00359728 /* Inceptionv3.mlmodel */; };
@@ -64,6 +65,15 @@
 		7308FC9F1FC267DF00E7A46A /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		7308FCDB1FC36A3F00E7A46A /* PendingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingStatus.swift; sourceTree = "<group>"; };
 		7308FCDD1FC659C300E7A46A /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		731AFE4E205F226B008324AD /* CognitiveServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CognitiveServices.swift; sourceTree = "<group>"; };
+		731AFE50205F226B008324AD /* AnalyzeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeImage.swift; sourceTree = "<group>"; };
+		731AFE51205F226B008324AD /* GetThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetThumbnail.swift; sourceTree = "<group>"; };
+		731AFE53205F226B008324AD /* ListDomainSpecificModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDomainSpecificModels.swift; sourceTree = "<group>"; };
+		731AFE54205F226B008324AD /* OCR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCR.swift; sourceTree = "<group>"; };
+		731AFE55205F226B008324AD /* RecognizeDomainSpecificContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizeDomainSpecificContent.swift; sourceTree = "<group>"; };
+		731AFE56205F226B008324AD /* TagImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagImage.swift; sourceTree = "<group>"; };
+		731AFE58205F226B008324AD /* JSONNSDataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONNSDataExtension.swift; sourceTree = "<group>"; };
+		731AFE5C205F226B008324AD /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		732917461FA3993200B286C5 /* VGG16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = VGG16.mlmodel; sourceTree = "<group>"; };
 		732AF3B71F86DF84007F3451 /* 3rd Eye.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "3rd Eye.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		732AF3BA1F86DF84007F3451 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,18 +88,10 @@
 		732AF3DA1F86DF84007F3451 /* _rd_EyeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _rd_EyeUITests.swift; sourceTree = "<group>"; };
 		732AF3DC1F86DF84007F3451 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7333A1331FC21C4000E9535C /* VisualSupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualSupportViewController.swift; sourceTree = "<group>"; };
-		7333A1371FC21D1700E9535C /* CognitiveServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CognitiveServices.swift; sourceTree = "<group>"; };
-		7333A1391FC21D1700E9535C /* AnalyzeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeImage.swift; sourceTree = "<group>"; };
-		7333A13A1FC21D1700E9535C /* GetThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetThumbnail.swift; sourceTree = "<group>"; };
-		7333A13B1FC21D1700E9535C /* ListDomainSpecificModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDomainSpecificModels.swift; sourceTree = "<group>"; };
-		7333A13C1FC21D1700E9535C /* OCR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCR.swift; sourceTree = "<group>"; };
-		7333A13D1FC21D1700E9535C /* RecognizeDomainSpecificContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizeDomainSpecificContent.swift; sourceTree = "<group>"; };
-		7333A13E1FC21D1700E9535C /* TagImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagImage.swift; sourceTree = "<group>"; };
-		7333A13F1FC21D1700E9535C /* JSONNSDataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONNSDataExtension.swift; sourceTree = "<group>"; };
-		7333A1411FC21D1700E9535C /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		7333A1421FC21E5200E9535C /* DeveloperModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperModeViewController.swift; sourceTree = "<group>"; };
 		7333A1441FC21F9900E9535C /* VisionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionViewController.swift; sourceTree = "<group>"; };
 		7333A1471FC2247800E9535C /* UserMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMode.swift; sourceTree = "<group>"; };
+		7341160421BCA6A800EAC59F /* Speaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speaker.swift; sourceTree = "<group>"; };
 		73A59BE11F8725EC00359728 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Inceptionv3.mlmodel; sourceTree = "<group>"; };
 		73A59BE21F8725F500359728 /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
 		73A59BE31F8AA21B00359728 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +133,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		731AFE4C205F226B008324AD /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				731AFE4D205F226B008324AD /* CognitiveServices */,
+				731AFE5A205F226B008324AD /* Swift Extensions */,
+			);
+			name = SDK;
+			path = "../../../../../Google Drive/Accessible Programming/Third Eye/SDK";
+			sourceTree = "<group>";
+		};
+		731AFE4D205F226B008324AD /* CognitiveServices */ = {
+			isa = PBXGroup;
+			children = (
+				731AFE4E205F226B008324AD /* CognitiveServices.swift */,
+				731AFE4F205F226B008324AD /* ComputerVision */,
+				731AFE58205F226B008324AD /* JSONNSDataExtension.swift */,
+			);
+			path = CognitiveServices;
+			sourceTree = "<group>";
+		};
+		731AFE4F205F226B008324AD /* ComputerVision */ = {
+			isa = PBXGroup;
+			children = (
+				731AFE50205F226B008324AD /* AnalyzeImage.swift */,
+				731AFE51205F226B008324AD /* GetThumbnail.swift */,
+				731AFE53205F226B008324AD /* ListDomainSpecificModels.swift */,
+				731AFE54205F226B008324AD /* OCR.swift */,
+				731AFE55205F226B008324AD /* RecognizeDomainSpecificContent.swift */,
+				731AFE56205F226B008324AD /* TagImage.swift */,
+			);
+			path = ComputerVision;
+			sourceTree = "<group>";
+		};
+		731AFE5A205F226B008324AD /* Swift Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				731AFE5C205F226B008324AD /* StringExtension.swift */,
+			);
+			path = "Swift Extensions";
+			sourceTree = "<group>";
+		};
 		732AF3AE1F86DF84007F3451 = {
 			isa = PBXGroup;
 			children = (
@@ -159,11 +202,12 @@
 		732AF3B91F86DF84007F3451 /* 3rd Eye */ = {
 			isa = PBXGroup;
 			children = (
-				7333A1351FC21D1700E9535C /* SDK */,
+				731AFE4C205F226B008324AD /* SDK */,
 				732AF3BA1F86DF84007F3451 /* AppDelegate.swift */,
 				73A59BE31F8AA21B00359728 /* InitialViewController.swift */,
 				7333A1461FC21FA200E9535C /* Visual Identification */,
 				73D554B71FBE4A6C003F3614 /* Models.swift */,
+				7341160421BCA6A800EAC59F /* Speaker.swift */,
 				7308FCDB1FC36A3F00E7A46A /* PendingStatus.swift */,
 				7333A1471FC2247800E9535C /* UserMode.swift */,
 				7308FC9F1FC267DF00E7A46A /* UIButtonExtension.swift */,
@@ -193,47 +237,6 @@
 				732AF3DC1F86DF84007F3451 /* Info.plist */,
 			);
 			path = "3rd EyeUITests";
-			sourceTree = "<group>";
-		};
-		7333A1351FC21D1700E9535C /* SDK */ = {
-			isa = PBXGroup;
-			children = (
-				7333A1361FC21D1700E9535C /* CognitiveServices */,
-				7333A1401FC21D1700E9535C /* Swift Extensions */,
-			);
-			name = SDK;
-			path = "../../../../../Downloads/Microsoft-Cognitive-Services-Swift-SDK-master/SDK";
-			sourceTree = "<group>";
-		};
-		7333A1361FC21D1700E9535C /* CognitiveServices */ = {
-			isa = PBXGroup;
-			children = (
-				7333A1371FC21D1700E9535C /* CognitiveServices.swift */,
-				7333A1381FC21D1700E9535C /* ComputerVision */,
-				7333A13F1FC21D1700E9535C /* JSONNSDataExtension.swift */,
-			);
-			path = CognitiveServices;
-			sourceTree = "<group>";
-		};
-		7333A1381FC21D1700E9535C /* ComputerVision */ = {
-			isa = PBXGroup;
-			children = (
-				7333A1391FC21D1700E9535C /* AnalyzeImage.swift */,
-				7333A13A1FC21D1700E9535C /* GetThumbnail.swift */,
-				7333A13B1FC21D1700E9535C /* ListDomainSpecificModels.swift */,
-				7333A13C1FC21D1700E9535C /* OCR.swift */,
-				7333A13D1FC21D1700E9535C /* RecognizeDomainSpecificContent.swift */,
-				7333A13E1FC21D1700E9535C /* TagImage.swift */,
-			);
-			path = ComputerVision;
-			sourceTree = "<group>";
-		};
-		7333A1401FC21D1700E9535C /* Swift Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				7333A1411FC21D1700E9535C /* StringExtension.swift */,
-			);
-			path = "Swift Extensions";
 			sourceTree = "<group>";
 		};
 		7333A1461FC21FA200E9535C /* Visual Identification */ = {
@@ -280,8 +283,6 @@
 				732AF3B31F86DF84007F3451 /* Sources */,
 				732AF3B41F86DF84007F3451 /* Frameworks */,
 				732AF3B51F86DF84007F3451 /* Resources */,
-				65750DA92401E3639F54659F /* [CP] Embed Pods Frameworks */,
-				644E134C661A9C6B95AE8595 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -300,8 +301,6 @@
 				732AF3C71F86DF84007F3451 /* Sources */,
 				732AF3C81F86DF84007F3451 /* Frameworks */,
 				732AF3C91F86DF84007F3451 /* Resources */,
-				2F4E5A3AB80CFC7990D1F997 /* [CP] Embed Pods Frameworks */,
-				45B726D67DD00C1911D85D91 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -321,8 +320,6 @@
 				732AF3D21F86DF84007F3451 /* Sources */,
 				732AF3D31F86DF84007F3451 /* Frameworks */,
 				732AF3D41F86DF84007F3451 /* Resources */,
-				5C97078C21CF282ED41E3411 /* [CP] Embed Pods Frameworks */,
-				39118B8FBC398757389FF135 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -414,43 +411,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-3rd Eye-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		2F4E5A3AB80CFC7990D1F997 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-3rd EyeTests/Pods-3rd EyeTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		39118B8FBC398757389FF135 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-3rd EyeUITests/Pods-3rd EyeUITests-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4364155AD773DBF61BCB29BC /* [CP] Check Pods Manifest.lock */ = {
@@ -459,28 +429,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-3rd EyeUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		45B726D67DD00C1911D85D91 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-3rd EyeTests/Pods-3rd EyeTests-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		49BCE477A52C40F0E6CAA13B /* [CP] Check Pods Manifest.lock */ = {
@@ -489,58 +447,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-3rd EyeTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		5C97078C21CF282ED41E3411 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-3rd EyeUITests/Pods-3rd EyeUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		644E134C661A9C6B95AE8595 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-3rd Eye/Pods-3rd Eye-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		65750DA92401E3639F54659F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-3rd Eye/Pods-3rd Eye-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -550,28 +466,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7308FC951FC2410500E7A46A /* AnalyzeImage.swift in Sources */,
 				7308FCA01FC267DF00E7A46A /* UIButtonExtension.swift in Sources */,
-				7308FC9A1FC2410500E7A46A /* TagImage.swift in Sources */,
 				7308FCDC1FC36A3F00E7A46A /* PendingStatus.swift in Sources */,
-				7308FC981FC2410500E7A46A /* OCR.swift in Sources */,
+				734115FB21BC9DD700EAC59F /* StringExtension.swift in Sources */,
+				7341160521BCA6A800EAC59F /* Speaker.swift in Sources */,
+				734115FE21BC9DF900EAC59F /* GetThumbnail.swift in Sources */,
+				7341160021BC9DF900EAC59F /* OCR.swift in Sources */,
 				73D554B81FBE4A6C003F3614 /* Models.swift in Sources */,
 				7333A1451FC21F9900E9535C /* VisionViewController.swift in Sources */,
 				73A59C601F8C5B1300359728 /* Inceptionv3.mlmodel in Sources */,
 				7333A1481FC2247800E9535C /* UserMode.swift in Sources */,
 				7333A1431FC21E5200E9535C /* DeveloperModeViewController.swift in Sources */,
-				7308FC961FC2410500E7A46A /* GetThumbnail.swift in Sources */,
-				7308FC971FC2410500E7A46A /* ListDomainSpecificModels.swift in Sources */,
 				73A59BE41F8AA21B00359728 /* InitialViewController.swift in Sources */,
-				7308FC931FC240FB00E7A46A /* JSONNSDataExtension.swift in Sources */,
-				7308FC921FC240F700E7A46A /* CognitiveServices.swift in Sources */,
 				73AE2F671FE0DB6200ED13AA /* Reachability.swift in Sources */,
+				7341160221BC9DF900EAC59F /* TagImage.swift in Sources */,
+				734115FF21BC9DF900EAC59F /* ListDomainSpecificModels.swift in Sources */,
 				7308FCDE1FC659C300E7A46A /* UIImageExtension.swift in Sources */,
+				7341160321BC9DF900EAC59F /* JSONNSDataExtension.swift in Sources */,
 				732917471FA3993900B286C5 /* VGG16.mlmodel in Sources */,
+				734115FD21BC9DF900EAC59F /* AnalyzeImage.swift in Sources */,
+				7341160121BC9DF900EAC59F /* RecognizeDomainSpecificContent.swift in Sources */,
 				7333A1341FC21C4000E9535C /* VisualSupportViewController.swift in Sources */,
 				73A59C5F1F8C5B1000359728 /* Resnet50.mlmodel in Sources */,
-				7308FC941FC240FF00E7A46A /* StringExtension.swift in Sources */,
-				7308FC991FC2410500E7A46A /* RecognizeDomainSpecificContent.swift in Sources */,
+				734115FC21BC9DF200EAC59F /* CognitiveServices.swift in Sources */,
 				732AF3BB1F86DF84007F3451 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

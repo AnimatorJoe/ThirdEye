@@ -9,7 +9,6 @@
 import UIKit
 import AVKit
 import Vision
-import Toast_Swift
 
 class DeveloperModeViewController: VisualSupportViewController {
     
@@ -93,7 +92,6 @@ extension DeveloperModeViewController {
         UIView.animate(withDuration: 0.4) {
             self.analyzedImage.alpha = 1
         }
-        
         
         // Process Based on Current User Mode
         switch currentModel {

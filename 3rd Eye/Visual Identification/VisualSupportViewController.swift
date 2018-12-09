@@ -9,7 +9,6 @@
 import UIKit
 import AVKit
 import Vision
-import Toast_Swift
 
 class VisualSupportViewController: VisionViewController {
     
@@ -106,7 +105,7 @@ class VisualSupportViewController: VisionViewController {
         if identificationPending || showingResultView { return }
         
         if !showingModelOptions && currentUserMode == .visualSupport {
-            let _ = "Select a mode".speak()
+            Speaker.speak("Select a mode")
         }
         
         modeButtons.forEach { (button) in
@@ -133,7 +132,7 @@ class VisualSupportViewController: VisionViewController {
         }
         
         if currentUserMode == .visualSupport {
-            let _ = "Switching to \(option)".speak()
+            Speaker.speak("Switching to \(option)")
         }
         
         currentModel = model
@@ -150,7 +149,7 @@ class VisualSupportViewController: VisionViewController {
         identificationView.alpha = 0
         
         UIView.animate(withDuration: 0.4) {
-            self.blurEffect.effect = self.effect
+//            self.blurEffect.effect = self.effect
             
             self.identificationView.alpha = 1
             self.identificationView.transform = CGAffineTransform.identity
@@ -190,7 +189,8 @@ class VisualSupportViewController: VisionViewController {
             hideIdentificationView()
             capturedImage = nil
             if currentUserMode == .visualSupport {
-                let _ = "Identification cancelled".speak()
+                Speaker.stopSpeaking()
+                Speaker.speak("Identification cancelled")
             }
         }
         
@@ -229,7 +229,7 @@ class VisualSupportViewController: VisionViewController {
     // Exit View
     @IBAction func exitView(_ sender: Any) {
         if currentUserMode == .visualSupport {
-            let _ = "Exiting camera view".speak()
+            Speaker.speak("Exiting camera view")
         }
         
         self.dismiss(animated: true) {
@@ -271,7 +271,8 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
             return
         }
         
-        let _ = "Identifying".speak()
+        Speaker.stopSpeaking()
+        Speaker.speak("Identifying")
         
         // Process Based on Current User Mode
         switch currentModel {
@@ -299,14 +300,14 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
                         
                         if self.identificationPending && requestImage.isEqual(self.capturedImage) {
                             
-                            if response?.descriptionText == "" {
-                                let _ = "No object identified".speak()
+                            if let resp = (response?.descriptionText) {
+                                self.reportAnswer(withAnswer: (resp))
+                            } else {
+                                self.reportAnswer(withAnswer: ("No object identified, please try again"))
                             }
                             
-                            self.reportAnswer(withAnswer: (response?.descriptionText)!)
-                            
                         } else {
-                            print("Dismissing Response \(Date()) + \(response!.descriptionText!)")
+                            print("Dismissing Response \(Date()) + \(response!.descriptionText)")
                         }
                     })
                 })
@@ -334,7 +335,7 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
                         let text = self.ocr.extractStringFromDictionary(response!)
                         
                         if text == "" {
-                            let _ = "No text identified".speak()
+                            Speaker.speak("No text identified")
                             self.identificationText.text = "no text identified"
                         }
                         
@@ -361,7 +362,7 @@ extension VisualSupportViewController: AVCapturePhotoCaptureDelegate {
         self.loadIndicator.isHidden = true
         self.identificationPending = false
         
-        let _ = text.speak()
+        Speaker.speak(text)
     }
 }
 
